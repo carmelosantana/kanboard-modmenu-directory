@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Hello Harmozi",
+    "name": "HelloHarmozi",
+    "author": "Carmelo Santana",
+    "description": "A random Alex Hormozi quote in your footer. A Hello Dolly homage.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/HelloHarmozi",
+    "download": "https://github.com/carmelosantana/HelloHarmozi/releases/download/v1.0.0/HelloHarmozi-1.0.0.zip"
+  },
+  {
+    "title": "ModMenu",
+    "name": "ModMenu",
+    "author": "Carmelo Santana",
+    "description": "A standalone plugin manager: browse, install, upload, enable/disable, update, and uninstall Kanboard plugins.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/ModMenu-v1.0.0/ModMenu-1.0.0.zip"
+  },
+  {
+    "title": "Shadcn Theme",
+    "name": "ShadcnTheme",
+    "author": "Carmelo Santana",
+    "description": "Modern Kanboard theme inspired by shadcn/ui design principles with light/dark mode toggle and system preference detection.",
+    "version": "1.0.1",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/ShadcnTheme-v1.0.1/ShadcnTheme-1.0.1.zip"
+  },
+  {
+    "title": "Bulk Project Delete",
+    "name": "BulkProjectDelete",
+    "author": "Carmelo Santana",
+    "description": "Bulk-delete multiple projects in one action.",
+    "version": "1.0.1",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/BulkProjectDelete-v1.0.1/BulkProjectDelete-1.0.1.zip"
+  },
+  {
+    "title": "Feature Sync",
+    "name": "FeatureSync",
+    "author": "Carmelo Santana",
+    "description": "Bulk-copy project features (actions, tags, columns, categories, swimlanes) from a source project to many target projects, with add-missing and replace modes and a read-only diff preview.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/FeatureSync-v1.0.0/FeatureSync-1.0.0.zip"
+  },
+  {
+    "title": "Subtask Generator",
+    "name": "SubtaskGenerator",
+    "author": "Carmelo Santana",
+    "description": "Generate subtasks from a task description using an AI provider (Anthropic, OpenAI, or Grok).",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/SubtaskGenerator-v1.0.0/SubtaskGenerator-1.0.0.zip"
+  }
+]
