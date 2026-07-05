@@ -65,9 +65,19 @@
     "name": "CalendarPlugin",
     "author": "Carmelo Santana",
     "description": "Drag-and-drop calendar view: tasks by due date, across all projects or per project. Month and agenda views, unscheduled sidebar, filters, and overdue highlighting.",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/CalendarPlugin-v1.0.2/CalendarPlugin-1.0.2.zip"
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/CalendarPlugin-v1.1.0/CalendarPlugin-1.1.0.zip"
+  },
+  {
+    "title": "Dependency",
+    "name": "DependencyPlugin",
+    "author": "Carmelo Santana",
+    "description": "Task dependencies built on core task links: blocked/blocker badges on board cards, calendar events, and the task page, plus a cycle guard. Calendar badges require CalendarPlugin >= 1.1.0.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/DependencyPlugin-v1.0.0/DependencyPlugin-1.0.0.zip"
   }
 ]
