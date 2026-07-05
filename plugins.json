@@ -59,5 +59,15 @@
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-plugins",
     "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/SubtaskGenerator-v1.0.0/SubtaskGenerator-1.0.0.zip"
+  },
+  {
+    "title": "Calendar",
+    "name": "CalendarPlugin",
+    "author": "Carmelo Santana",
+    "description": "Drag-and-drop calendar view: tasks by due date, across all projects or per project. Month and agenda views, unscheduled sidebar, filters, and overdue highlighting.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/CalendarPlugin-v1.0.0/CalendarPlugin-1.0.0.zip"
   }
 ]
