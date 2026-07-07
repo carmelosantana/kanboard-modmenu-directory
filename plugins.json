@@ -79,5 +79,15 @@
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-plugins",
     "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/DependencyPlugin-v1.0.0/DependencyPlugin-1.0.0.zip"
+  },
+  {
+    "title": "Scheduler",
+    "name": "SchedulerPlugin",
+    "author": "Carmelo Santana",
+    "description": "Automatically rolls overdue tasks forward on a daily sweep, per opt-in project: working-days and de-clump policies, skip-blocked (DependencyPlugin), audit log, per-run activity summary, and a calendar auto-moved badge. Calendar badge requires CalendarPlugin >= 1.1.0.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/SchedulerPlugin-v1.0.0/SchedulerPlugin-1.0.0.zip"
   }
 ]
