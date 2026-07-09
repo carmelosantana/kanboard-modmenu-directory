@@ -78,7 +78,8 @@
     "version": "1.0.0",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/DependencyPlugin-v1.0.0/DependencyPlugin-1.0.0.zip"
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/DependencyPlugin-v1.0.0/DependencyPlugin-1.0.0.zip",
+    "recommends": [ { "plugin": "CalendarPlugin", "min_version": "1.1.0", "reason": "adds blocked/blocker badges on calendar events" } ]
   },
   {
     "title": "Scheduler",
@@ -88,6 +89,10 @@
     "version": "1.0.0",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/SchedulerPlugin-v1.0.0/SchedulerPlugin-1.0.0.zip"
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/SchedulerPlugin-v1.0.0/SchedulerPlugin-1.0.0.zip",
+    "recommends": [
+      { "plugin": "CalendarPlugin", "min_version": "1.1.0", "reason": "shows the auto-moved badge on calendar events" },
+      { "plugin": "DependencyPlugin", "reason": "lets the scheduler skip blocked tasks" }
+    ]
   }
 ]
