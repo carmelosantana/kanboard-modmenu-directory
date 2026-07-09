@@ -14,11 +14,11 @@
     "title": "ModMenu",
     "name": "ModMenu",
     "author": "Carmelo Santana",
-    "description": "A standalone plugin manager: browse, install, upload, enable/disable, update, and uninstall Kanboard plugins.",
-    "version": "1.0.0",
+    "description": "A standalone plugin manager: browse, install, upload, enable/disable, update, and uninstall Kanboard plugins. Now with a dependency system — plugins can declare required/recommended deps that ModMenu enforces or prompts for.",
+    "version": "1.1.0",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/ModMenu-v1.0.0/ModMenu-1.0.0.zip"
+    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/ModMenu-v1.1.0/ModMenu-1.1.0.zip"
   },
   {
     "title": "Shadcn Theme",
