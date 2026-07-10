@@ -6,8 +6,8 @@
     "description": "A random Alex Hormozi quote in your footer. A Hello Dolly homage.",
     "version": "1.0.0",
     "compatible_version": ">=1.2.47",
-    "homepage": "https://github.com/carmelosantana/HelloHarmozi",
-    "download": "https://github.com/carmelosantana/HelloHarmozi/releases/download/v1.0.0/HelloHarmozi-1.0.0.zip",
+    "homepage": "https://github.com/carmelosantana/kanboard-hello-harmozi",
+    "download": "https://github.com/carmelosantana/kanboard-hello-harmozi/releases/download/v1.0.0/HelloHarmozi-1.0.0.zip",
     "screenshots": ["assets/hello-harmozi/screenshot-1.png"]
   },
   {
@@ -17,18 +17,18 @@
     "description": "A standalone plugin manager: browse, install, upload, enable/disable, update, and uninstall Kanboard plugins. Now with a dependency system — plugins can declare required/recommended deps that ModMenu enforces or prompts for.",
     "version": "1.1.0",
     "compatible_version": ">=1.2.47",
-    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/ModMenu-v1.1.0/ModMenu-1.1.0.zip"
+    "homepage": "https://github.com/carmelosantana/kanboard-modmenu",
+    "download": "https://github.com/carmelosantana/kanboard-modmenu/releases/download/v1.1.0/ModMenu-1.1.0.zip"
   },
   {
     "title": "Shadcn Theme",
     "name": "ShadcnTheme",
     "author": "Carmelo Santana",
     "description": "Modern Kanboard theme inspired by shadcn/ui design principles with light/dark mode toggle and system preference detection.",
-    "version": "1.0.1",
+    "version": "1.0.4",
     "compatible_version": ">=1.2.47",
-    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/ShadcnTheme-v1.0.1/ShadcnTheme-1.0.1.zip"
+    "homepage": "https://github.com/carmelosantana/kanboard-shadcn-theme",
+    "download": "https://github.com/carmelosantana/kanboard-shadcn-theme/releases/download/v1.0.4/ShadcnTheme-1.0.4.zip"
   },
   {
     "title": "Bulk Project Delete",
@@ -37,28 +37,39 @@
     "description": "Bulk-delete multiple projects in one action.",
     "version": "1.0.1",
     "compatible_version": ">=1.2.47",
-    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/BulkProjectDelete-v1.0.1/BulkProjectDelete-1.0.1.zip"
+    "homepage": "https://github.com/carmelosantana/kanboard-bulk-project-delete",
+    "download": "https://github.com/carmelosantana/kanboard-bulk-project-delete/releases/download/v1.0.1/BulkProjectDelete-1.0.1.zip"
   },
   {
     "title": "Feature Sync",
     "name": "FeatureSync",
     "author": "Carmelo Santana",
     "description": "Bulk-copy project features (actions, tags, columns, categories, swimlanes) from a source project to many target projects, with add-missing and replace modes and a read-only diff preview.",
+    "version": "1.0.1",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-feature-sync",
+    "download": "https://github.com/carmelosantana/kanboard-feature-sync/releases/download/v1.0.1/FeatureSync-1.0.1.zip"
+  },
+  {
+    "title": "AI Connector",
+    "name": "AiConnector",
+    "author": "Carmelo Santana",
+    "description": "Universal multi-provider AI backend (built on php-agents): configure named provider profiles (Anthropic, OpenAI, Grok, Gemini, Mistral, Ollama), pick a default, and switch on the fly. Exposes a shared PHP API other plugins consume.",
     "version": "1.0.0",
     "compatible_version": ">=1.2.47",
-    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/FeatureSync-v1.0.0/FeatureSync-1.0.0.zip"
+    "homepage": "https://github.com/carmelosantana/kanboard-ai-connector",
+    "download": "https://github.com/carmelosantana/kanboard-ai-connector/releases/download/v1.0.0/AiConnector-1.0.0.zip"
   },
   {
     "title": "Subtask Generator",
     "name": "SubtaskGenerator",
     "author": "Carmelo Santana",
-    "description": "Generate subtasks from a task description using an AI provider (Anthropic, OpenAI, or Grok).",
-    "version": "1.0.0",
+    "description": "Generate subtasks from a task description using AI. The provider backend (Anthropic, OpenAI, Grok, Gemini, Mistral, Ollama) is supplied by the AiConnector plugin, with a point-of-use provider picker.",
+    "version": "1.1.0",
     "compatible_version": ">=1.2.47",
-    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/SubtaskGenerator-v1.0.0/SubtaskGenerator-1.0.0.zip"
+    "homepage": "https://github.com/carmelosantana/kanboard-subtask-generator",
+    "download": "https://github.com/carmelosantana/kanboard-subtask-generator/releases/download/v1.1.0/SubtaskGenerator-1.1.0.zip",
+    "requires": [ { "plugin": "AiConnector", "min_version": "1.0.0", "reason": "provides the AI provider backend" } ]
   },
   {
     "title": "Calendar",
@@ -67,8 +78,8 @@
     "description": "Drag-and-drop calendar view: tasks by due date, across all projects or per project. Month and agenda views, unscheduled sidebar, filters, and overdue highlighting.",
     "version": "1.1.0",
     "compatible_version": ">=1.2.47",
-    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/CalendarPlugin-v1.1.0/CalendarPlugin-1.1.0.zip"
+    "homepage": "https://github.com/carmelosantana/kanboard-calendar",
+    "download": "https://github.com/carmelosantana/kanboard-calendar/releases/download/v1.1.0/CalendarPlugin-1.1.0.zip"
   },
   {
     "title": "Dependency",
@@ -77,8 +88,8 @@
     "description": "Task dependencies built on core task links: blocked/blocker badges on board cards, calendar events, and the task page, plus a cycle guard. Calendar badges require CalendarPlugin >= 1.1.0.",
     "version": "1.0.0",
     "compatible_version": ">=1.2.47",
-    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/DependencyPlugin-v1.0.0/DependencyPlugin-1.0.0.zip",
+    "homepage": "https://github.com/carmelosantana/kanboard-dependency",
+    "download": "https://github.com/carmelosantana/kanboard-dependency/releases/download/v1.0.0/DependencyPlugin-1.0.0.zip",
     "recommends": [ { "plugin": "CalendarPlugin", "min_version": "1.1.0", "reason": "adds blocked/blocker badges on calendar events" } ]
   },
   {
@@ -88,8 +99,8 @@
     "description": "Automatically rolls overdue tasks forward on a daily sweep, per opt-in project: working-days and de-clump policies, skip-blocked (DependencyPlugin), audit log, per-run activity summary, and a calendar auto-moved badge. Calendar badge requires CalendarPlugin >= 1.1.0.",
     "version": "1.0.0",
     "compatible_version": ">=1.2.47",
-    "homepage": "https://github.com/carmelosantana/kanboard-plugins",
-    "download": "https://github.com/carmelosantana/kanboard-plugins/releases/download/SchedulerPlugin-v1.0.0/SchedulerPlugin-1.0.0.zip",
+    "homepage": "https://github.com/carmelosantana/kanboard-scheduler",
+    "download": "https://github.com/carmelosantana/kanboard-scheduler/releases/download/v1.0.0/SchedulerPlugin-1.0.0.zip",
     "recommends": [
       { "plugin": "CalendarPlugin", "min_version": "1.1.0", "reason": "shows the auto-moved badge on calendar events" },
       { "plugin": "DependencyPlugin", "reason": "lets the scheduler skip blocked tasks" }
