@@ -75,11 +75,11 @@
     "title": "Calendar",
     "name": "CalendarPlugin",
     "author": "Carmelo Santana",
-    "description": "Drag-and-drop calendar view: tasks by due date, across all projects or per project. Month and agenda views, unscheduled sidebar, filters, and overdue highlighting.",
-    "version": "1.1.0",
+    "description": "Drag-and-drop calendar view: tasks by due date, across all projects or per project. Month, week, day, and agenda views, an unscheduled sidebar, filters, and overdue highlighting. Plugins can contribute their own events via the calendarEventSources hook.",
+    "version": "1.2.0",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-calendar",
-    "download": "https://github.com/carmelosantana/kanboard-calendar/releases/download/v1.1.0/CalendarPlugin-1.1.0.zip"
+    "download": "https://github.com/carmelosantana/kanboard-calendar/releases/download/v1.2.0/CalendarPlugin-1.2.0.zip"
   },
   {
     "title": "Dependency",
@@ -118,6 +118,19 @@
     "recommends": [
       { "plugin": "AiConnector", "min_version": "1.0.0", "reason": "AI-assisted area proposal, goal clarification, and reflective narrative" },
       { "plugin": "ShadcnTheme", "min_version": "1.1.0", "reason": "themed styling via the kbx-* primitives" }
+    ]
+  },
+  {
+    "title": "Time Block",
+    "name": "TimeBlock",
+    "author": "Carmelo Santana",
+    "description": "Give a task one planned start+end time block — distinct from its due date — shown on the task page and board card, and contributed to CalendarPlugin's week/day time-grid views.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-time-block",
+    "download": "https://github.com/carmelosantana/kanboard-time-block/releases/download/v1.0.0/TimeBlock-1.0.0.zip",
+    "recommends": [
+      { "plugin": "CalendarPlugin", "min_version": "1.2.0", "reason": "renders time blocks on the calendar week/day views" }
     ]
   }
 ]
