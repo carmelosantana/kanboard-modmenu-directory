@@ -105,5 +105,19 @@
       { "plugin": "CalendarPlugin", "min_version": "1.1.0", "reason": "shows the auto-moved badge on calendar events" },
       { "plugin": "DependencyPlugin", "reason": "lets the scheduler skip blocked tasks" }
     ]
+  },
+  {
+    "title": "Kensho",
+    "name": "Kensho",
+    "author": "Carmelo Santana",
+    "description": "A private, per-user reflection companion: mine your own Kanboard activity, record who you want to be, and reflect on whether the two align — with an LLM (via AiConnector) as a collaborator, never an authority. Works fully manually without AI.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-kensho",
+    "download": "https://github.com/carmelosantana/kanboard-kensho/releases/download/v1.0.0/Kensho-1.0.0.zip",
+    "recommends": [
+      { "plugin": "AiConnector", "min_version": "1.0.0", "reason": "AI-assisted area proposal, goal clarification, and reflective narrative" },
+      { "plugin": "ShadcnTheme", "min_version": "1.1.0", "reason": "themed styling via the kbx-* primitives" }
+    ]
   }
 ]
