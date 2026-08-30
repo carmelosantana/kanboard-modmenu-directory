@@ -55,10 +55,10 @@
     "name": "AiConnector",
     "author": "Carmelo Santana",
     "description": "Universal multi-provider AI backend (built on php-agents): configure named provider profiles (Anthropic, OpenAI, Grok, Gemini, Mistral, Ollama), pick a default, and switch on the fly. Exposes a shared PHP API other plugins consume, including model context-window discovery and token estimation (ModelCatalog).",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-ai-connector",
-    "download": "https://github.com/carmelosantana/kanboard-ai-connector/releases/download/v1.1.0/AiConnector-1.1.0.zip"
+    "download": "https://github.com/carmelosantana/kanboard-ai-connector/releases/download/v1.1.1/AiConnector-1.1.1.zip"
   },
   {
     "title": "Subtask Generator",
