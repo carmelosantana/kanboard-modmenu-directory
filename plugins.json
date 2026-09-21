@@ -148,11 +148,11 @@
     "title": "TimeInvoice",
     "name": "TimeInvoice",
     "author": "Carmelo Santana",
-    "description": "Generate polished PDF invoices from your TimeReport hours: pick a project and date range, roll up line items by task, day or week, set rate and tax, and track invoices through draft, sent and paid with stable per-year numbering.",
-    "version": "1.1.0",
+    "description": "Generate polished PDF invoices from your TimeReport hours: pick a project and date range, roll up line items by task, day or week, set rate and tax, and track invoices through draft, issued and paid with stable per-year numbering. Per-project rates, client details and payment terms, an invoice page with inline PDF, and live totals as you draft.",
+    "version": "1.2.0",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-time-invoice",
-    "download": "https://github.com/carmelosantana/kanboard-time-invoice/releases/download/v1.1.0/TimeInvoice-1.1.0.zip",
+    "download": "https://github.com/carmelosantana/kanboard-time-invoice/releases/download/v1.2.0/TimeInvoice-1.2.0.zip",
     "requires": [ { "plugin": "TimeReport", "min_version": "1.4.0", "reason": "supplies the deduped, correctly-attributed hours aggregate and breakdown[].task_ids used for invoice line items and AI cover-note context" } ],
     "recommends": [ { "plugin": "AiConnector", "min_version": "1.1.0", "reason": "optional AI cover-note generation via ProviderRegistry and ModelCatalog; the feature is hidden when absent" } ]
   }
