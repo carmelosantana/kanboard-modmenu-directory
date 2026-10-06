@@ -155,5 +155,15 @@
     "download": "https://github.com/carmelosantana/kanboard-time-invoice/releases/download/v1.2.2/TimeInvoice-1.2.2.zip",
     "requires": [ { "plugin": "TimeReport", "min_version": "1.4.0", "reason": "supplies the deduped, correctly-attributed hours aggregate and breakdown[].task_ids used for invoice line items and AI cover-note context" } ],
     "recommends": [ { "plugin": "AiConnector", "min_version": "1.1.0", "reason": "optional AI cover-note generation via ProviderRegistry and ModelCatalog; the feature is hidden when absent" } ]
+  },
+  {
+    "title": "Agents",
+    "name": "Agents",
+    "author": "Carmelo Santana",
+    "description": "Provision API-only agent users that drive Kanboard via MCP, and see their work in progress: ranked WIP flags, one-click fixes, and the getWipFlags/applyWipFix API.",
+    "version": "0.3.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-agents",
+    "download": "https://github.com/carmelosantana/kanboard-agents/releases/download/v0.3.0/Agents-0.3.0.zip"
   }
 ]
