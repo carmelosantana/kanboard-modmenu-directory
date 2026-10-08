@@ -76,7 +76,7 @@
     "name": "CalendarPlugin",
     "author": "Carmelo Santana",
     "description": "Drag-and-drop calendar view: tasks by due date, across all projects or per project. Month, week, day, and agenda views, an unscheduled sidebar, filters, and overdue highlighting. Plugins can contribute their own events via the calendarEventSources hook.",
-    "version": "1.2.1",
+    "version": "1.2.0",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-calendar",
     "download": "https://github.com/carmelosantana/kanboard-calendar/releases/download/v1.2.0/CalendarPlugin-1.2.0.zip"
