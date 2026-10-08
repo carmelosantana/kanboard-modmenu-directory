@@ -15,10 +15,10 @@
     "name": "ModMenu",
     "author": "Carmelo Santana",
     "description": "A standalone plugin manager: browse, install, upload, enable/disable, update, and uninstall Kanboard plugins. Now with a dependency system — plugins can declare required/recommended deps that ModMenu enforces or prompts for.",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-modmenu",
-    "download": "https://github.com/carmelosantana/kanboard-modmenu/releases/download/v1.2.0/ModMenu-1.2.0.zip"
+    "download": "https://github.com/carmelosantana/kanboard-modmenu/releases/download/v1.2.1/ModMenu-1.2.1.zip"
   },
   {
     "title": "Shadcn Theme",
@@ -76,7 +76,7 @@
     "name": "CalendarPlugin",
     "author": "Carmelo Santana",
     "description": "Drag-and-drop calendar view: tasks by due date, across all projects or per project. Month, week, day, and agenda views, an unscheduled sidebar, filters, and overdue highlighting. Plugins can contribute their own events via the calendarEventSources hook.",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-calendar",
     "download": "https://github.com/carmelosantana/kanboard-calendar/releases/download/v1.2.0/CalendarPlugin-1.2.0.zip"
