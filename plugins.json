@@ -161,9 +161,9 @@
     "name": "Agents",
     "author": "Carmelo Santana",
     "description": "Provision API-only agent users that drive Kanboard via MCP, and see their work in progress: ranked WIP flags, one-click fixes, and the getWipFlags/applyWipFix API.",
-    "version": "0.3.3",
+    "version": "0.4.0",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-agents",
-    "download": "https://github.com/carmelosantana/kanboard-agents/releases/download/v0.3.3/Agents-0.3.3.zip"
+    "download": "https://github.com/carmelosantana/kanboard-agents/releases/download/v0.4.0/Agents-0.4.0.zip"
   }
 ]
