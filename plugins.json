@@ -198,5 +198,16 @@
     ],
     "recommends": [ { "plugin": "TimeReport", "min_version": "1.5.0", "reason": "adds subtask progress and XP; Battle Lobby will theme them in a later release (the theme works fully without it)" } ],
     "conflicts": ["ShadcnTheme"]
+  },
+  {
+    "title": "Presence",
+    "name": "Presence",
+    "author": "Carmelo Santana",
+    "description": "See which project members are online, away or offline — with agent users badged as bots. Privacy-first: opt-out per user, admin off switch, no activity history.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-presence",
+    "download": "https://github.com/carmelosantana/kanboard-presence/releases/download/v1.0.0/Presence-1.0.0.zip",
+    "recommends": [ { "plugin": "Agents", "min_version": "0.3.2", "reason": "badges agent users as bots and lights them on their JSON-RPC calls" } ]
   }
 ]
