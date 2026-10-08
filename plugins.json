@@ -164,10 +164,10 @@
     "name": "Agents",
     "author": "Carmelo Santana",
     "description": "Provision API-only agent users that drive Kanboard via MCP, and see their work in progress: ranked WIP flags, one-click fixes, and the getWipFlags/applyWipFix API.",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-agents",
-    "download": "https://github.com/carmelosantana/kanboard-agents/releases/download/v0.4.0/Agents-0.4.0.zip"
+    "download": "https://github.com/carmelosantana/kanboard-agents/releases/download/v0.4.1/Agents-0.4.1.zip"
   },
   {
     "title": "Battle Lobby",
