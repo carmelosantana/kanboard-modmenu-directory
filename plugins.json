@@ -68,10 +68,10 @@
     "name": "AiConnector",
     "author": "Carmelo Santana",
     "description": "Universal multi-provider AI backend (built on php-agents): configure named provider profiles (Anthropic, OpenAI, Grok, Gemini, Mistral, Ollama), pick a default, and switch on the fly. Exposes a shared PHP API other plugins consume, including model context-window discovery and token estimation (ModelCatalog).",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-ai-connector",
-    "download": "https://github.com/carmelosantana/kanboard-ai-connector/releases/download/v1.1.2/AiConnector-1.1.2.zip"
+    "download": "https://github.com/carmelosantana/kanboard-ai-connector/releases/download/v1.1.3/AiConnector-1.1.3.zip"
   },
   {
     "title": "Subtask Generator",
@@ -89,10 +89,10 @@
     "name": "CalendarPlugin",
     "author": "Carmelo Santana",
     "description": "Drag-and-drop calendar view: tasks by due date, across all projects or per project. Month, week, day, and agenda views, an unscheduled sidebar, filters, and overdue highlighting. Plugins can contribute their own events via the calendarEventSources hook.",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-calendar",
-    "download": "https://github.com/carmelosantana/kanboard-calendar/releases/download/v1.2.0/CalendarPlugin-1.2.0.zip"
+    "download": "https://github.com/carmelosantana/kanboard-calendar/releases/download/v1.2.1/CalendarPlugin-1.2.1.zip"
   },
   {
     "title": "Dependency",
