@@ -209,5 +209,21 @@
     "homepage": "https://github.com/carmelosantana/kanboard-presence",
     "download": "https://github.com/carmelosantana/kanboard-presence/releases/download/v1.0.0/Presence-1.0.0.zip",
     "recommends": [ { "plugin": "Agents", "min_version": "0.3.2", "reason": "badges agent users as bots and lights them on their JSON-RPC calls" } ]
+  },
+  {
+    "title": "Chicane",
+    "name": "Chicane",
+    "author": "Carmelo Santana",
+    "description": "Watch a project as a race track: each task is a corner, a task with subtasks is a chicane, and the cars are the people working on them. Finished road is paved; stalled work leaves hazards. Private by default, with optional share links.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-chicane",
+    "download": "https://github.com/carmelosantana/kanboard-chicane/releases/download/v1.0.0/Chicane-1.0.0.zip",
+    "recommends": [
+      {"plugin": "Presence", "min_version": "1.0.0", "reason": "shows which project members are online beside the track"},
+      {"plugin": "Agents", "min_version": "0.4.1", "reason": "badges agent-driven cars as bots"},
+      {"plugin": "TimeReport", "min_version": "1.5.0", "reason": "adds a level and XP plate to each car from time tracked in the window"},
+      {"plugin": "DependencyPlugin", "min_version": "1.0.0", "reason": "a UI for managing core \"is blocked by\" links; the track reads those links and puts a barrier on blocked work either way"}
+    ]
   }
 ]
