@@ -15,10 +15,10 @@
     "name": "ModMenu",
     "author": "Carmelo Santana",
     "description": "A standalone plugin manager: browse, install, upload, enable/disable, update, and uninstall Kanboard plugins, with a dependency system. Updates itself with one click (verified, staged swap with rollback).",
-    "version": "1.3.3",
+    "version": "1.4.0",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-modmenu",
-    "download": "https://github.com/carmelosantana/kanboard-modmenu/releases/download/v1.3.3/ModMenu-1.3.3.zip",
+    "download": "https://github.com/carmelosantana/kanboard-modmenu/releases/download/v1.4.0/ModMenu-1.4.0.zip",
     "screenshots": ["assets/mod-menu/1.webp", "assets/mod-menu/2.webp"]
   },
   {
