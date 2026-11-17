@@ -36,6 +36,9 @@ A JSON array of plugin objects. Fields:
 | `homepage` | no | Project URL. |
 | `compatible_version` | no | Minimum Kanboard version (informational; ModMenu displays but does not enforce it). |
 | `screenshots` | no | Array of image URLs (absolute, or relative to this file's location) shown on the card. |
+| `requires` | no | Hard dependencies: an array of `{ "plugin", "min_version", "reason" }` objects with a bare version (`"1.1.4"`, not `">=1.1.4"`). ModMenu blocks enabling until they are installed. Any other shape is silently ignored. |
+| `recommends` | no | Soft dependencies, same array shape as `requires`. ModMenu suggests them but lets the admin carry on. |
+| `conflicts` | no | Array of plugin names that must not be active at the same time, e.g. `["ShadcnTheme"]`. ModMenu checks both sides and asks before disabling the other plugin. |
 
 ### Hosting the zips
 

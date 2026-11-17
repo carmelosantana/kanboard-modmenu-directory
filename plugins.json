@@ -83,10 +83,10 @@
     "name": "SubtaskGenerator",
     "author": "Carmelo Santana",
     "description": "Generate subtasks from a task description using AI. The provider backend (Anthropic, OpenAI, Grok, Gemini, Mistral, Ollama) is supplied by the AiConnector plugin, with a point-of-use provider picker.",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-subtask-generator",
-    "download": "https://github.com/carmelosantana/kanboard-subtask-generator/releases/download/v1.1.0/SubtaskGenerator-1.1.0.zip",
+    "download": "https://github.com/carmelosantana/kanboard-subtask-generator/releases/download/v1.1.1/SubtaskGenerator-1.1.1.zip",
     "screenshots": ["assets/subtask-generator/1.webp"],
     "requires": [ { "plugin": "AiConnector", "min_version": "1.0.0", "reason": "provides the AI provider backend" } ]
   },
