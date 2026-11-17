@@ -241,5 +241,15 @@
       {"plugin": "TimeReport", "min_version": "1.5.0", "reason": "adds a level and XP plate to each car from time tracked in the window"},
       {"plugin": "DependencyPlugin", "min_version": "1.0.0", "reason": "a UI for managing core \"is blocked by\" links; the track reads those links and puts a barrier on blocked work either way"}
     ]
+  },
+  {
+    "title": "BigBoard",
+    "name": "Bigboard",
+    "author": "Carmelo Santana",
+    "description": "Several project boards on one page: pick projects, search across them, fold one away, and drag a task from one project's board into another's. Only shows projects you can access. A maintained fork of the original BigBoard plugin.",
+    "version": "2.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-bigboard",
+    "download": "https://github.com/carmelosantana/kanboard-bigboard/releases/download/v2.0.0/Bigboard-2.0.0.zip"
   }
 ]
