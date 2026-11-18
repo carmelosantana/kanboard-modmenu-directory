@@ -251,5 +251,20 @@
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-bigboard",
     "download": "https://github.com/carmelosantana/kanboard-bigboard/releases/download/v2.0.0/Bigboard-2.0.0.zip"
+  },
+  {
+    "title": "Pulse",
+    "name": "Pulse",
+    "author": "Carmelo Santana",
+    "description": "A GitHub-style activity heatmap for you, your agents and your projects, coloured by person, type or project. Respects project permissions; managers see their project's members.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-pulse",
+    "download": "https://github.com/carmelosantana/kanboard-pulse/releases/download/v1.0.0/Pulse-1.0.0.zip",
+    "screenshots": ["assets/pulse/1.webp"],
+    "recommends": [
+      { "plugin": "Agents", "min_version": "0.4.1", "reason": "shows your agents' graphs next to yours" },
+      { "plugin": "TimeReport", "min_version": "1.7.1", "reason": "counts manually entered time as time logged" }
+    ]
   }
 ]
