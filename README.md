@@ -40,6 +40,31 @@ A JSON array of plugin objects. Fields:
 | `recommends` | no | Soft dependencies, same array shape as `requires`. ModMenu suggests them but lets the admin carry on. |
 | `conflicts` | no | Array of plugin names that must not be active at the same time, e.g. `["ShadcnTheme"]`. ModMenu checks both sides and asks before disabling the other plugin. |
 
+### Editing `plugins.json`
+
+Edit `plugins.json` **as text**: add or bump one entry by hand and leave every other line
+alone. Never load it with a JSON parser and write it back (`json.dump`, `JSON.stringify`, `jq`
+in place): that re-formats the whole file, buries the real change in a diff of hundreds of
+lines, and has done so before.
+
+Publish the release first, then list it. CI (`.github/workflows/validate.yml`) runs
+`node scripts/validate.ts --online` on every PR and push to `main`, and fails when:
+
+- an entry is missing `name`, `title`, `version` or `download`, or has an unknown field;
+- `version` or a dependency's `min_version` is not a bare version (`"1.2.3"`, not `">=1.2.3"`);
+- `requires` or `recommends` is not an array of `{ "plugin", "min_version", "reason" }` objects
+  (ModMenu silently ignores any other shape, so the dependency would never be enforced);
+- `download` is not `<homepage>/releases/download/v<version>/<name>-<version>.zip`;
+- `version` is not the repo's latest GitHub release, or the `download` URL does not return 200.
+
+Run it locally with Node 22+ (no install step):
+
+```bash
+node scripts/validate.ts            # shape only
+node scripts/validate.ts --online   # also releases and downloads (set GITHUB_TOKEN to avoid rate limits)
+node --test 'scripts/*.test.ts'     # the validator's own tests; quote the glob, Node 22 needs it
+```
+
 ### Hosting the zips
 
 Each `download` points at a plugin zip whose **single top-level folder is the
