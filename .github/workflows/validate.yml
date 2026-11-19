@@ -1,0 +1,33 @@
+# Checks plugins.json on every PR and push to main: its shape (dependencies as arrays of
+# objects with bare versions), that each version is the repo's latest GitHub release, and
+# that each download URL returns 200.
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  plugins-json:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+
+      - name: Validator tests
+        run: node --test 'scripts/*.test.ts'
+
+      - name: Shape, latest releases, downloads
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/validate.ts --online
