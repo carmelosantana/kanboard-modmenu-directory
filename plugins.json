@@ -39,6 +39,7 @@
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-modmenu-updater",
     "download": "https://github.com/carmelosantana/kanboard-modmenu-updater/releases/download/v1.0.1/ModMenuUpdater-1.0.1.zip",
+    "screenshots": ["assets/mod-menu-updater/1.webp"],
     "requires": [
       { "plugin": "ModMenu", "min_version": "1.1.0", "reason": "Uses ModMenu's directory sources and archive checks." }
     ]
@@ -313,7 +314,8 @@
     "last_updated": "2026-11-17",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-bigboard",
-    "download": "https://github.com/carmelosantana/kanboard-bigboard/releases/download/v2.0.0/Bigboard-2.0.0.zip"
+    "download": "https://github.com/carmelosantana/kanboard-bigboard/releases/download/v2.0.0/Bigboard-2.0.0.zip",
+    "screenshots": ["assets/bigboard/1.webp", "assets/bigboard/2.webp"]
   },
   {
     "title": "Pulse",
@@ -344,7 +346,8 @@
     "last_updated": "2026-11-18",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-resend",
-    "download": "https://github.com/carmelosantana/kanboard-resend/releases/download/v1.0.0/Resend-1.0.0.zip"
+    "download": "https://github.com/carmelosantana/kanboard-resend/releases/download/v1.0.0/Resend-1.0.0.zip",
+    "screenshots": ["assets/resend/1.webp"]
   },
   {
     "title": "Agent Chat",
@@ -376,6 +379,7 @@
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-steward",
     "download": "https://github.com/carmelosantana/kanboard-steward/releases/download/v1.0.0/Steward-1.0.0.zip",
+    "screenshots": ["assets/steward/1.webp", "assets/steward/2.webp"],
     "recommends": [
       { "plugin": "Resend", "min_version": "1.0.0", "reason": "a working email transport for the test-email button" }
     ]
