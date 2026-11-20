@@ -276,5 +276,20 @@
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-resend",
     "download": "https://github.com/carmelosantana/kanboard-resend/releases/download/v1.0.0/Resend-1.0.0.zip"
+  },
+  {
+    "title": "Agent Chat",
+    "name": "AgentChat",
+    "author": "Carmelo Santana",
+    "description": "A chat room for every project, with an optional project bot that answers from the project's tasks, comments and knowledge base, citing its sources, and an ask-the-bot drawer on each task. People chat works on its own; the bot needs AiConnector.",
+    "version": "0.1.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-agent-chat",
+    "download": "https://github.com/carmelosantana/kanboard-agent-chat/releases/download/v0.1.0/AgentChat-0.1.0.zip",
+    "screenshots": ["assets/agent-chat/1.webp"],
+    "recommends": [
+      { "plugin": "AiConnector", "min_version": "1.2.0", "reason": "Project bot answers" },
+      { "plugin": "Agents", "min_version": "0.5.0", "reason": "Agent badges" }
+    ]
   }
 ]
