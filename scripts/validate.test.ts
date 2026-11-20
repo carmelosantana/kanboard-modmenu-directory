@@ -98,8 +98,11 @@ test('online: version is the latest release and the zip returns 200', async () =
 });
 
 test('online: a newer release than the listed version fails', async () => {
-  const f = fakeFetch({ [latest]: { status: 200, body: { tag_name: 'v1.2.4' } }, [zip]: { status: 200 } });
-  assert.match((await checkOnline([good()], f)).join('\n'), /Demo: lists 1\.2\.3 but the latest GitHub release is v1\.2\.4/);
+  const f = fakeFetch({ [latest]: { status: 200, body: { tag_name: 'v1.2.4', published_at: '2026-03-01T00:00:00Z' } }, [zip]: { status: 200 } });
+  const problems = await checkOnline([good()], f);
+  assert.equal(problems.length, 1);
+  assert.match(problems[0], /Demo: lists 1\.2\.3 but the latest GitHub release is v1\.2\.4/);
+  assert.doesNotMatch(problems[0], /last_updated/);
 });
 
 test('online: a download that is not 200 fails', async () => {
@@ -115,4 +118,9 @@ test('online: a repo with no readable latest release fails', async () => {
 test('online: last_updated must be the release publish date (UTC)', async () => {
   const f = fakeFetch({ [latest]: { status: 200, body: { tag_name: 'v1.2.3', published_at: '2026-02-02T01:00:00Z' } }, [zip]: { status: 200 } });
   assert.match((await checkOnline([good()], f)).join('\n'), /Demo: last_updated is 2026-02-01 but v1\.2\.3 was published 2026-02-02/);
+});
+
+test('online: a matching release without published_at is reported plainly', async () => {
+  const f = fakeFetch({ [latest]: { status: 200, body: { tag_name: 'v1.2.3' } }, [zip]: { status: 200 } });
+  assert.deepEqual(await checkOnline([good()], f), ['Demo: v1.2.3 has no published_at']);
 });

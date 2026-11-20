@@ -138,7 +138,8 @@ export async function checkOnline(entries: Array<Record<string, any>>, fetcher: 
           out.push(`${e.name}: lists ${e.version} but the latest GitHub release is ${tag}`);
         } else {
           const published = String(release.published_at ?? '').slice(0, 10);
-          if (published !== e.last_updated) out.push(`${e.name}: last_updated is ${e.last_updated} but ${tag} was published ${published}`);
+          if (published === '') out.push(`${e.name}: ${tag} has no published_at`);
+          else if (published !== e.last_updated) out.push(`${e.name}: last_updated is ${e.last_updated} but ${tag} was published ${published}`);
         }
       }
     }

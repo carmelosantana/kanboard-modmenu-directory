@@ -53,7 +53,8 @@ without one under **Other**, and sorts entries without dates last.
 **Where the dates come from:**
 
 - `added`: the date of the first commit in this repo whose `plugins.json` contains the entry,
-  `git log --reverse --format=%ad --date=short -S'"name": "<Name>"' -- plugins.json | head -1`. Today's date
+  `TZ=UTC git log --reverse --date=short-local --format=%ad -S'"name": "<Name>"' -- plugins.json | head -1`
+  (UTC, like `last_updated`). Today's UTC date
   for a new entry. It never changes after that.
 - `last_updated`: the release's publish date in UTC,
   `gh release view v<version> -R <owner/repo> --json publishedAt` (first ten characters).
