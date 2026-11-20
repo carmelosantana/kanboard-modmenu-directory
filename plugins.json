@@ -399,5 +399,22 @@
     "recommends": [
       { "plugin": "Agents", "min_version": "0.3.2", "reason": "creates the agent users that Vault lets read granted entries through the API" }
     ]
+  },
+  {
+    "title": "LAN Party",
+    "name": "LanParty",
+    "category": "Fun",
+    "author": "Carmelo Santana",
+    "description": "A game launcher for your team with four original browser games, best-per-player leaderboards, saves and challenge links. Games run sandboxed, and other plugins can add their own.",
+    "version": "0.1.0",
+    "added": "2026-11-20",
+    "last_updated": "2026-11-20",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-lan-party",
+    "download": "https://github.com/carmelosantana/kanboard-lan-party/releases/download/v0.1.0/LanParty-0.1.0.zip",
+    "screenshots": ["assets/lan-party/1.webp", "assets/lan-party/2.webp", "assets/lan-party/3.webp", "assets/lan-party/4.webp"],
+    "recommends": [
+      { "plugin": "Agents", "min_version": "0.5.0", "reason": "keeps agent users off the leaderboards" }
+    ]
   }
 ]
