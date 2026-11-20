@@ -383,5 +383,21 @@
     "recommends": [
       { "plugin": "Resend", "min_version": "1.0.0", "reason": "a working email transport for the test-email button" }
     ]
+  },
+  {
+    "title": "Vault",
+    "name": "Vault",
+    "category": "Administration",
+    "author": "Carmelo Santana",
+    "description": "Encrypted password store for Kanboard: per-user keys behind a separate vault passphrase, shared groups, agent access, one-time share links and KeePassXC import/export.",
+    "version": "1.0.0",
+    "added": "2026-11-20",
+    "last_updated": "2026-11-20",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-vault",
+    "download": "https://github.com/carmelosantana/kanboard-vault/releases/download/v1.0.0/Vault-1.0.0.zip",
+    "recommends": [
+      { "plugin": "Agents", "min_version": "0.3.2", "reason": "creates the agent users that Vault lets read granted entries through the API" }
+    ]
   }
 ]
