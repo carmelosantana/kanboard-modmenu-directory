@@ -291,5 +291,18 @@
       { "plugin": "AiConnector", "min_version": "1.2.0", "reason": "Project bot answers" },
       { "plugin": "Agents", "min_version": "0.5.0", "reason": "Agent badges" }
     ]
+  },
+  {
+    "title": "Steward",
+    "name": "Steward",
+    "author": "Carmelo Santana",
+    "description": "Admin tools for Kanboard: view Kanboard as another user with an audit log, site branding, safer Markdown with task lists, highlighting and Mermaid, project home and public pages, a test email button and an announcement banner. Each feature has its own switch.",
+    "version": "1.0.0",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-steward",
+    "download": "https://github.com/carmelosantana/kanboard-steward/releases/download/v1.0.0/Steward-1.0.0.zip",
+    "recommends": [
+      { "plugin": "Resend", "min_version": "1.0.0", "reason": "a working email transport for the test-email button" }
+    ]
   }
 ]
