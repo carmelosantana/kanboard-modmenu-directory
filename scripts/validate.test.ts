@@ -1,14 +1,17 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { checkShape, checkOnline, type Fetcher } from './validate.ts';
+import { checkShape, checkOnline, CATEGORIES, type Fetcher } from './validate.ts';
 
 const good = () => ({
   title: 'Demo',
   name: 'Demo',
+  category: 'Planning',
   author: 'A',
   description: 'd',
   version: '1.2.3',
+  added: '2026-01-15',
+  last_updated: '2026-02-01',
   compatible_version: '>=1.2.47',
   homepage: 'https://github.com/acme/kanboard-demo',
   download: 'https://github.com/acme/kanboard-demo/releases/download/v1.2.3/Demo-1.2.3.zip',
@@ -44,6 +47,14 @@ const cases: Array<[string, (e: any) => void, RegExp]> = [
   ['conflicts as objects', (e) => (e.conflicts = [{ plugin: 'X' }]), /Demo: conflicts: must be an array of plugin names/],
   ['download not matching the version', (e) => (e.version = '1.2.4'), /Demo: download must end in \/releases\/download\/v1\.2\.4\/Demo-1\.2\.4\.zip/],
   ['download outside homepage', (e) => (e.homepage = 'https://github.com/acme/other'), /Demo: download is not a release of homepage/],
+  ['missing category', (e) => delete e.category, /Demo: category: required string/],
+  ['category outside the set', (e) => (e.category = 'Games'), /Demo: category "Games" is not one of AI, Administration, /],
+  ['missing added', (e) => delete e.added, /Demo: added: required string/],
+  ['missing last_updated', (e) => delete e.last_updated, /Demo: last_updated: required string/],
+  ['added not YYYY-MM-DD', (e) => (e.added = '2026-1-15'), /Demo: added "2026-1-15" is not a date like "2026-11-20"/],
+  ['last_updated with a time', (e) => (e.last_updated = '2026-02-01T00:00:00Z'), /Demo: last_updated "2026-02-01T00:00:00Z" is not a date like "2026-11-20"/],
+  ['an impossible date', (e) => (e.last_updated = '2026-02-30'), /Demo: last_updated "2026-02-30" is not a real date/],
+  ['added after last_updated', (e) => (e.added = '2026-03-01'), /Demo: added 2026-03-01 is after last_updated 2026-02-01/],
   ['screenshots as a string', (e) => (e.screenshots = 'a.webp'), /Demo: screenshots: must be an array of strings/],
 ];
 for (const [label, mutate, expected] of cases) {
@@ -53,6 +64,18 @@ for (const [label, mutate, expected] of cases) {
     assert.match(checkShape([e]).join('\n'), expected);
   });
 }
+
+test('the category set is the documented one', () => {
+  assert.deepEqual(CATEGORIES, ['AI', 'Administration', 'Appearance', 'Collaboration', 'Fun', 'Integrations', 'Planning', 'Reporting', 'Time tracking']);
+});
+
+test('accepts every category in the set', () => {
+  for (const category of CATEGORIES) assert.deepEqual(checkShape([{ ...good(), category }]), [], category);
+});
+
+test('added equal to last_updated passes', () => {
+  assert.deepEqual(checkShape([{ ...good(), added: '2026-02-01' }]), []);
+});
 
 test('rejects a duplicate name', () => {
   assert.match(checkShape([good(), good()]).join('\n'), /Demo: duplicate name/);
@@ -70,13 +93,16 @@ const latest = 'GET https://api.github.com/repos/acme/kanboard-demo/releases/lat
 const zip = 'HEAD https://github.com/acme/kanboard-demo/releases/download/v1.2.3/Demo-1.2.3.zip';
 
 test('online: version is the latest release and the zip returns 200', async () => {
-  const f = fakeFetch({ [latest]: { status: 200, body: { tag_name: 'v1.2.3' } }, [zip]: { status: 200 } });
+  const f = fakeFetch({ [latest]: { status: 200, body: { tag_name: 'v1.2.3', published_at: '2026-02-01T21:30:00Z' } }, [zip]: { status: 200 } });
   assert.deepEqual(await checkOnline([good()], f), []);
 });
 
 test('online: a newer release than the listed version fails', async () => {
-  const f = fakeFetch({ [latest]: { status: 200, body: { tag_name: 'v1.2.4' } }, [zip]: { status: 200 } });
-  assert.match((await checkOnline([good()], f)).join('\n'), /Demo: lists 1\.2\.3 but the latest GitHub release is v1\.2\.4/);
+  const f = fakeFetch({ [latest]: { status: 200, body: { tag_name: 'v1.2.4', published_at: '2026-03-01T00:00:00Z' } }, [zip]: { status: 200 } });
+  const problems = await checkOnline([good()], f);
+  assert.equal(problems.length, 1);
+  assert.match(problems[0], /Demo: lists 1\.2\.3 but the latest GitHub release is v1\.2\.4/);
+  assert.doesNotMatch(problems[0], /last_updated/);
 });
 
 test('online: a download that is not 200 fails', async () => {
@@ -87,4 +113,14 @@ test('online: a download that is not 200 fails', async () => {
 test('online: a repo with no readable latest release fails', async () => {
   const f = fakeFetch({ [zip]: { status: 200 } });
   assert.match((await checkOnline([good()], f)).join('\n'), /Demo: latest release lookup returned 404/);
+});
+
+test('online: last_updated must be the release publish date (UTC)', async () => {
+  const f = fakeFetch({ [latest]: { status: 200, body: { tag_name: 'v1.2.3', published_at: '2026-02-02T01:00:00Z' } }, [zip]: { status: 200 } });
+  assert.match((await checkOnline([good()], f)).join('\n'), /Demo: last_updated is 2026-02-01 but v1\.2\.3 was published 2026-02-02/);
+});
+
+test('online: a matching release without published_at is reported plainly', async () => {
+  const f = fakeFetch({ [latest]: { status: 200, body: { tag_name: 'v1.2.3' } }, [zip]: { status: 200 } });
+  assert.deepEqual(await checkOnline([good()], f), ['Demo: v1.2.3 has no published_at']);
 });

@@ -2,7 +2,8 @@
 //
 //   node scripts/validate.ts            shape checks only (offline)
 //   node scripts/validate.ts --online   also: each version is the repo's latest GitHub
-//                                       release, and each download URL returns 200
+//                                       release, last_updated is its UTC publish date,
+//                                       and each download URL returns 200
 //
 // ModMenu silently ignores dependency entries in the wrong shape, so a typo here ships a
 // plugin whose requirements are never enforced. Exits 1 with one line per problem.
@@ -11,12 +12,23 @@
 export type Fetcher = (url: string, init?: { method?: string; headers?: Record<string, string> }) => Promise<Response>;
 
 const ENTRY_FIELDS = new Set([
-  'title', 'name', 'author', 'description', 'version', 'compatible_version',
-  'homepage', 'download', 'screenshots', 'requires', 'recommends', 'conflicts',
+  'title', 'name', 'category', 'author', 'description', 'version', 'added', 'last_updated',
+  'compatible_version', 'homepage', 'download', 'screenshots', 'requires', 'recommends', 'conflicts',
 ]);
-const REQUIRED = ['name', 'title', 'version', 'download'] as const;
+const REQUIRED = ['name', 'title', 'category', 'version', 'added', 'last_updated', 'download'] as const;
+/** The categories this directory allows. ModMenu itself shows any string, so forks may use their own. */
+export const CATEGORIES = [
+  'AI', 'Administration', 'Appearance', 'Collaboration', 'Fun', 'Integrations', 'Planning', 'Reporting', 'Time tracking',
+];
+const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const DEP_FIELDS = new Set(['plugin', 'min_version', 'reason']);
 const BARE_VERSION = /^\d+(\.\d+){0,3}$/;
+
+/** A YYYY-MM-DD string that names a day on the calendar (no 2026-02-30). */
+const isRealDate = (d: string): boolean => {
+  const t = Date.parse(`${d}T00:00:00Z`);
+  return !Number.isNaN(t) && new Date(t).toISOString().slice(0, 10) === d;
+};
 
 const isObject = (v: unknown): v is Record<string, unknown> =>
   typeof v === 'object' && v !== null && !Array.isArray(v);
@@ -77,6 +89,20 @@ export function checkShape(data: unknown): string[] {
         out.push(`${label}: download is not a release of homepage ${homepage}`);
       }
     }
+    if (typeof entry.category === 'string' && entry.category !== '' && !CATEGORIES.includes(entry.category)) {
+      out.push(`${label}: category ${JSON.stringify(entry.category)} is not one of ${CATEGORIES.join(', ')}`);
+    }
+    const dates: Record<string, string> = {};
+    for (const k of ['added', 'last_updated'] as const) {
+      const d = entry[k];
+      if (typeof d !== 'string' || d === '') continue;
+      if (!DATE.test(d)) out.push(`${label}: ${k} ${JSON.stringify(d)} is not a date like "2026-11-20"`);
+      else if (!isRealDate(d)) out.push(`${label}: ${k} ${JSON.stringify(d)} is not a real date`);
+      else dates[k] = d;
+    }
+    if (dates.added && dates.last_updated && dates.added > dates.last_updated) {
+      out.push(`${label}: added ${dates.added} is after last_updated ${dates.last_updated}`);
+    }
     if (entry.screenshots !== undefined
         && (!Array.isArray(entry.screenshots) || entry.screenshots.some((s) => typeof s !== 'string'))) {
       out.push(`${label}: screenshots: must be an array of strings`);
@@ -106,8 +132,15 @@ export async function checkOnline(entries: Array<Record<string, any>>, fetcher: 
       if (res.status !== 200) {
         out.push(`${e.name}: latest release lookup returned ${res.status}`);
       } else {
-        const tag = String(((await res.json()) as { tag_name?: string }).tag_name ?? '');
-        if (tag !== `v${e.version}`) out.push(`${e.name}: lists ${e.version} but the latest GitHub release is ${tag}`);
+        const release = (await res.json()) as { tag_name?: string; published_at?: string };
+        const tag = String(release.tag_name ?? '');
+        if (tag !== `v${e.version}`) {
+          out.push(`${e.name}: lists ${e.version} but the latest GitHub release is ${tag}`);
+        } else {
+          const published = String(release.published_at ?? '').slice(0, 10);
+          if (published === '') out.push(`${e.name}: ${tag} has no published_at`);
+          else if (published !== e.last_updated) out.push(`${e.name}: last_updated is ${e.last_updated} but ${tag} was published ${published}`);
+        }
       }
     }
     const dl = await fetcher(e.download, { method: 'HEAD', headers: { 'User-Agent': 'modmenu-directory-ci' } });
