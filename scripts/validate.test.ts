@@ -39,6 +39,9 @@ const cases: Array<[string, (e: any) => void, RegExp]> = [
   ['missing download', (e) => delete e.download, /Demo: download: required string/],
   ['unknown field', (e) => (e.requirez = []), /Demo: unknown field "requirez"/],
   ['version with a range', (e) => (e.version = '>=1.2.3'), /Demo: version ">=1.2.3" is not a bare version/],
+  ['a -dev version', (e) => (e.version = '2.0.0-dev'), /Demo: version "2\.0\.0-dev" is not a bare version/],
+  ['a pre-release without a number', (e) => (e.version = '2.0.0-beta'), /Demo: version "2\.0\.0-beta" is not a bare version/],
+  ['a pre-release min_version', (e) => (e.requires[0].min_version = '1.0.0-beta.1'), /Demo: requires\[0\]\.min_version "1\.0\.0-beta\.1" is not a bare version/],
   ['requires as an object', (e) => (e.requires = { Other: '1.0.0' }), /Demo: requires: must be an array of objects/],
   ['requires as strings', (e) => (e.requires = ['Other']), /Demo: requires\[0\]: must be an object/],
   ['recommends missing plugin', (e) => (e.recommends = [{ min_version: '1.0.0' }]), /Demo: recommends\[0\]\.plugin: required string/],
@@ -62,6 +65,15 @@ for (const [label, mutate, expected] of cases) {
     const e = good();
     mutate(e);
     assert.match(checkShape([e]).join('\n'), expected);
+  });
+}
+
+for (const version of ['2.0.0-beta.1', '2.0.0-rc.2']) {
+  test(`accepts the pre-release version ${version}`, () => {
+    const e = good();
+    e.version = version;
+    e.download = `https://github.com/acme/kanboard-demo/releases/download/v${version}/Demo-${version}.zip`;
+    assert.deepEqual(checkShape([e]), []);
   });
 }
 

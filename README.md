@@ -74,7 +74,8 @@ Publish the release first, then list it. CI (`.github/workflows/validate.yml`) r
   or has an unknown field;
 - `category` is not in the set above, a date is not a real `YYYY-MM-DD` day, or `added` is after
   `last_updated`;
-- `version` or a dependency's `min_version` is not a bare version (`"1.2.3"`, not `">=1.2.3"`);
+- `version` is not a bare version (`"1.2.3"`, not `">=1.2.3"`) or a numbered pre-release (`"2.0.0-beta.1"`, `"2.0.0-rc.1"`),
+  or a dependency's `min_version` is not a bare version;
 - `requires` or `recommends` is not an array of `{ "plugin", "min_version", "reason" }` objects
   (ModMenu silently ignores any other shape, so the dependency would never be enforced);
 - `download` is not `<homepage>/releases/download/v<version>/<name>-<version>.zip`;
