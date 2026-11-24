@@ -23,6 +23,8 @@ export const CATEGORIES = [
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const DEP_FIELDS = new Set(['plugin', 'min_version', 'reason']);
 const BARE_VERSION = /^\d+(\.\d+){0,3}$/;
+// An entry's own version may be a numbered beta or release candidate; dependency min_version stays bare.
+const RELEASE_VERSION = /^\d+(\.\d+){0,3}(-(beta|rc)\.\d+)?$/;
 
 /** A YYYY-MM-DD string that names a day on the calendar (no 2026-02-30). */
 const isRealDate = (d: string): boolean => {
@@ -76,7 +78,7 @@ export function checkShape(data: unknown): string[] {
       seen.add(entry.name);
     }
     const { name, version, download, homepage } = entry;
-    if (typeof version === 'string' && !BARE_VERSION.test(version)) {
+    if (typeof version === 'string' && !RELEASE_VERSION.test(version)) {
       out.push(`${label}: version ${JSON.stringify(version)} is not a bare version like "1.2.3"`);
     }
     if (typeof download === 'string') {

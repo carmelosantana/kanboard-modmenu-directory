@@ -62,6 +62,23 @@
     ]
   },
   {
+    "title": "Harbor",
+    "name": "Harbor",
+    "category": "Appearance",
+    "author": "Carmelo Santana",
+    "description": "The suite's flagship theme and UI kit, succeeding Shadcn Theme: Newburgh and Shadcn presets in light and dark, no flash on load, a floating sign-in page and a subtask status menu. Beta: phase 1 of 4.",
+    "version": "2.0.0-beta.1",
+    "added": "2026-11-24",
+    "last_updated": "2026-11-24",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-harbor",
+    "download": "https://github.com/carmelosantana/kanboard-harbor/releases/download/v2.0.0-beta.1/Harbor-2.0.0-beta.1.zip",
+    "recommends": [
+      { "plugin": "Steward", "min_version": "1.2.0", "reason": "layout wrappers stack (Harbor D7)" }
+    ],
+    "conflicts": ["BattleLobby"]
+  },
+  {
     "title": "Bulk Project Delete",
     "name": "BulkProjectDelete",
     "category": "Administration",
