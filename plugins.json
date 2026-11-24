@@ -373,12 +373,12 @@
     "category": "Administration",
     "author": "Carmelo Santana",
     "description": "Admin tools for Kanboard: view Kanboard as another user with an audit log, site branding, safer Markdown with task lists, highlighting and Mermaid, project home and public pages, a test email button and an announcement banner. Each feature has its own switch.",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "added": "2026-11-20",
-    "last_updated": "2026-11-20",
+    "last_updated": "2026-11-24",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-steward",
-    "download": "https://github.com/carmelosantana/kanboard-steward/releases/download/v1.0.0/Steward-1.0.0.zip",
+    "download": "https://github.com/carmelosantana/kanboard-steward/releases/download/v1.2.0/Steward-1.2.0.zip",
     "screenshots": ["assets/steward/1.webp", "assets/steward/2.webp"],
     "recommends": [
       { "plugin": "Resend", "min_version": "1.0.0", "reason": "a working email transport for the test-email button" }
@@ -442,5 +442,86 @@
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-windowsill",
     "download": "https://github.com/carmelosantana/kanboard-windowsill/releases/download/v0.1.0/Windowsill-0.1.0.zip"
+  },
+  {
+    "title": "Gumshoe",
+    "name": "Gumshoe",
+    "category": "Administration",
+    "author": "Carmelo Santana",
+    "description": "Watch GitHub lockfiles for vulnerable dependencies and malware, and track findings in Kanboard.",
+    "version": "1.0.0",
+    "added": "2026-11-24",
+    "last_updated": "2026-11-24",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-gumshoe",
+    "download": "https://github.com/carmelosantana/kanboard-gumshoe/releases/download/v1.0.0/Gumshoe-1.0.0.zip",
+    "requires": [
+      {
+        "plugin": "Vault",
+        "min_version": "1.1.0",
+        "reason": "Holds GitHub tokens with Server sharing enabled. Gumshoe stores only Vault references."
+      }
+    ],
+    "recommends": [
+      {
+        "plugin": "Foreman",
+        "reason": "Runs Gumshoe scans on a schedule."
+      },
+      {
+        "plugin": "Harbor",
+        "reason": "Suite design system the Gumshoe pages are styled with; core styles are used without it."
+      }
+    ]
+  },
+  {
+    "title": "Foreman",
+    "name": "Foreman",
+    "category": "Administration",
+    "author": "Carmelo Santana",
+    "description": "Foreman is one small plugin that runs every suite job from one crontab line.",
+    "version": "1.0.0",
+    "added": "2026-11-24",
+    "last_updated": "2026-11-24",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-foreman",
+    "download": "https://github.com/carmelosantana/kanboard-foreman/releases/download/v1.0.0/Foreman-1.0.0.zip",
+    "recommends": [
+      {
+        "plugin": "Harbor",
+        "reason": "Provides shared styles for the Jobs page."
+      }
+    ]
+  },
+  {
+    "title": "Switchboard",
+    "name": "Switchboard",
+    "category": "Planning",
+    "author": "Carmelo Santana",
+    "description": "Command palette for Kanboard: press Ctrl/⌘+K to find and run any action, with commands and search added by plugins.",
+    "version": "1.0.0",
+    "added": "2026-11-24",
+    "last_updated": "2026-11-24",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-switchboard",
+    "download": "https://github.com/carmelosantana/kanboard-switchboard/releases/download/v1.0.0/Switchboard-1.0.0.zip",
+    "recommends": [
+      {
+        "plugin": "Harbor",
+        "reason": "uses Harbor's tokens and dialog styling when installed"
+      }
+    ]
+  },
+  {
+    "title": "Hot Dog Press",
+    "name": "HotDogPress",
+    "category": "Fun",
+    "author": "Carmelo Santana",
+    "description": "Make a single-sheet, eight-page zine and print it at home.",
+    "version": "0.1.0",
+    "added": "2026-11-24",
+    "last_updated": "2026-11-24",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-hotdog-press",
+    "download": "https://github.com/carmelosantana/kanboard-hotdog-press/releases/download/v0.1.0/HotDogPress-0.1.0.zip"
   }
 ]
