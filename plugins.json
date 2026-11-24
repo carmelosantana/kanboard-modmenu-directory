@@ -390,12 +390,12 @@
     "category": "Administration",
     "author": "Carmelo Santana",
     "description": "Admin tools for Kanboard: view Kanboard as another user with an audit log, site branding, safer Markdown with task lists, highlighting and Mermaid, project home and public pages, a test email button and an announcement banner. Each feature has its own switch.",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "added": "2026-11-20",
     "last_updated": "2026-11-24",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-steward",
-    "download": "https://github.com/carmelosantana/kanboard-steward/releases/download/v1.2.0/Steward-1.2.0.zip",
+    "download": "https://github.com/carmelosantana/kanboard-steward/releases/download/v1.2.1/Steward-1.2.1.zip",
     "screenshots": ["assets/steward/1.webp", "assets/steward/2.webp"],
     "recommends": [
       { "plugin": "Resend", "min_version": "1.0.0", "reason": "a working email transport for the test-email button" }
