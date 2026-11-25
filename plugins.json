@@ -49,13 +49,13 @@
     "name": "ShadcnTheme",
     "category": "Appearance",
     "author": "Carmelo Santana",
-    "description": "Modern Kanboard theme inspired by shadcn/ui design principles with light/dark mode toggle and system preference detection.",
-    "version": "1.2.0",
+    "description": "Final release; replaced by Harbor. Modern Kanboard theme inspired by shadcn/ui design principles with light/dark mode toggle and system preference detection.",
+    "version": "1.3.0",
     "added": "2026-07-03",
-    "last_updated": "2026-11-20",
+    "last_updated": "2026-11-25",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-shadcn-theme",
-    "download": "https://github.com/carmelosantana/kanboard-shadcn-theme/releases/download/v1.2.0/ShadcnTheme-1.2.0.zip",
+    "download": "https://github.com/carmelosantana/kanboard-shadcn-theme/releases/download/v1.3.0/ShadcnTheme-1.3.0.zip",
     "screenshots": ["assets/shadcn-theme/1.webp", "assets/shadcn-theme/2.webp", "assets/shadcn-theme/3.webp"],
     "recommends": [
       { "plugin": "Steward", "min_version": "1.0.0", "reason": "site logo, favicon and name" }
