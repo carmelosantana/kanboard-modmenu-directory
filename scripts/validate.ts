@@ -14,6 +14,7 @@ export type Fetcher = (url: string, init?: { method?: string; headers?: Record<s
 const ENTRY_FIELDS = new Set([
   'title', 'name', 'category', 'author', 'description', 'version', 'added', 'last_updated',
   'compatible_version', 'homepage', 'download', 'sha256', 'screenshots', 'requires', 'recommends', 'conflicts',
+  'replaces', 'deprecated',
 ]);
 const REQUIRED = ['name', 'title', 'category', 'version', 'added', 'last_updated', 'download'] as const;
 /** The categories this directory allows. ModMenu itself shows any string, so forks may use their own. */
@@ -22,6 +23,7 @@ export const CATEGORIES = [
 ];
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const DEP_FIELDS = new Set(['plugin', 'min_version', 'reason']);
+const DEPRECATED_FIELDS = new Set(['superseded_by', 'since', 'reason']);
 const BARE_VERSION = /^\d+(\.\d+){0,3}$/;
 // An entry's own version may be a numbered beta or release candidate; dependency min_version stays bare.
 const RELEASE_VERSION = /^\d+(\.\d+){0,3}(-(beta|rc)\.\d+)?$/;
@@ -115,6 +117,25 @@ export function checkShape(data: unknown): string[] {
     for (const key of ['requires', 'recommends'] as const) {
       if (entry[key] !== undefined) checkDeps(label, key, entry[key], out);
     }
+    if (entry.replaces !== undefined) {
+      if (!Array.isArray(entry.replaces) || entry.replaces.some((r) => typeof r !== 'string' || r === '')) {
+        out.push(`${label}: replaces: must be an array of plugin names`);
+      } else if (entry.replaces.includes(entry.name)) {
+        out.push(`${label}: replaces: cannot name itself`);
+      }
+    }
+    if (entry.deprecated !== undefined) {
+      const d = entry.deprecated;
+      if (!isObject(d)) {
+        out.push(`${label}: deprecated: must be an object like {"superseded_by": "X", "since": "1.3.0"}`);
+      } else {
+        for (const k of Object.keys(d)) if (!DEPRECATED_FIELDS.has(k)) out.push(`${label}: deprecated: unknown field "${k}"`);
+        if (typeof d.superseded_by !== 'string' || d.superseded_by === '') out.push(`${label}: deprecated.superseded_by: required string`);
+        else if (d.superseded_by === entry.name) out.push(`${label}: deprecated.superseded_by: cannot name itself`);
+        if (typeof d.since !== 'string' || !BARE_VERSION.test(d.since)) out.push(`${label}: deprecated.since: required bare version like "1.3.0"`);
+        if (d.reason !== undefined && typeof d.reason !== 'string') out.push(`${label}: deprecated.reason: must be a string`);
+      }
+    }
     if (entry.conflicts !== undefined
         && (!Array.isArray(entry.conflicts) || entry.conflicts.some((c) => typeof c !== 'string' || c === ''))) {
       out.push(`${label}: conflicts: must be an array of plugin names`);
@@ -125,7 +146,7 @@ export function checkShape(data: unknown): string[] {
 
 /** Network checks for entries that passed checkShape. */
 /**
- * Offline: every `requires`/`recommends` `plugin` names an entry in plugins.json (exact, case-sensitive
+ * Offline: every `requires`/`recommends` `plugin`, `replaces` name and `deprecated.superseded_by` names an entry in plugins.json (exact, case-sensitive
  * `name`). ModMenu resolves dependencies by that name, so a working title or typo silently resolves to nothing.
  * Run it after checkShape passes; it skips entries whose dependency lists are malformed.
  */
@@ -140,6 +161,15 @@ export function checkDependencyNames(entries: Array<Record<string, any>>): strin
           out.push(`${entry.name}: ${key}[${i}].plugin ${JSON.stringify(dep.plugin)} is not a plugin in plugins.json`);
         }
       });
+    }
+    if (Array.isArray(entry.replaces)) {
+      entry.replaces.forEach((r: unknown, i: number) => {
+        if (typeof r === 'string' && !names.has(r)) out.push(`${entry.name}: replaces[${i}] ${JSON.stringify(r)} is not a plugin in plugins.json`);
+      });
+    }
+    const by = isObject(entry.deprecated) ? entry.deprecated.superseded_by : undefined;
+    if (typeof by === 'string' && !names.has(by)) {
+      out.push(`${entry.name}: deprecated.superseded_by ${JSON.stringify(by)} is not a plugin in plugins.json`);
     }
   }
   return out;

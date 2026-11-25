@@ -43,6 +43,8 @@ A JSON array of plugin objects. Fields:
 | `requires` | no | Hard dependencies: an array of `{ "plugin", "min_version", "reason" }` objects with a bare version (`"1.1.4"`, not `">=1.1.4"`). ModMenu blocks enabling until they are installed. Any other shape is silently ignored. |
 | `recommends` | no | Soft dependencies, same array shape as `requires`. ModMenu suggests them but lets the admin carry on. |
 | `conflicts` | no | Array of plugin names that must not be active at the same time, e.g. `["ShadcnTheme"]`. ModMenu checks both sides and asks before disabling the other plugin. |
+| `replaces` | no | Array of listed plugin names this plugin succeeds, e.g. Harbor's `["ShadcnTheme"]`. Same as the plugin's `plugin.json`; read by ModMenu 1.6.0+. |
+| `deprecated` | no | `{ "superseded_by": "<listed name>", "since": "<bare version>", "reason": "…" }` (`reason` optional). Same as the plugin's `plugin.json`; the entry stays installable. |
 
 \* Required in this directory (the validator enforces them). They are optional for ModMenu itself, so a
 fork can leave them out or use its own categories: ModMenu shows any category string, files an entry
@@ -79,9 +81,10 @@ Publish the release first, then list it. CI (`.github/workflows/validate.yml`) r
   or a dependency's `min_version` is not a bare version;
 - `requires` or `recommends` is not an array of `{ "plugin", "min_version", "reason" }` objects
   (ModMenu silently ignores any other shape, so the dependency would never be enforced);
-- a `requires` or `recommends` `plugin` is not the exact `name` of an entry in `plugins.json`
+- a `requires` or `recommends` `plugin`, a `replaces` name or `deprecated.superseded_by` is not the exact `name` of an entry in `plugins.json`
   (a working title or typo resolves to nothing);
 - `download` is not `<homepage>/releases/download/v<version>/<name>-<version>.zip`;
+- `replaces` is not an array of names other than the entry's own, or `deprecated` lacks `superseded_by` or a bare `since`, or has an unknown field;
 - `sha256` is not 64 lowercase hex characters, or (online) does not match the downloaded zip;
 - `version` is not the repo's latest GitHub release, `last_updated` is not that release's UTC publish
   date, or the `download` URL does not return 200.

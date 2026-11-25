@@ -111,6 +111,46 @@ for (const [label, value] of [
   });
 }
 
+// replaces and deprecated mirror plugin.json (ModMenu 1.6.0 reads them; Harbor replaces ShadcnTheme).
+const dep = { superseded_by: 'Other', since: '1.3.0', reason: 'r' };
+test('accepts replaces and deprecated in their plugin.json shapes', () => {
+  assert.deepEqual(checkShape([{ ...good(), replaces: ['Old'], deprecated: dep }]), []);
+  assert.deepEqual(checkShape([{ ...good(), deprecated: { superseded_by: 'Other', since: '1.3.0' } }]), []);
+});
+for (const [label, value] of [
+  ['a string', 'Old'],
+  ['an empty name', ['']],
+  ['a non-string name', [1]],
+] as const) {
+  test(`rejects replaces that is ${label}`, () => {
+    assert.match(checkShape([{ ...good(), replaces: value }]).join('\n'), /Demo: replaces: must be an array of plugin names/);
+  });
+}
+test('rejects an entry that replaces itself', () => {
+  assert.match(checkShape([{ ...good(), replaces: ['Demo'] }]).join('\n'), /Demo: replaces: cannot name itself/);
+});
+for (const [label, value, msg] of [
+  ['not an object', 'Harbor', /Demo: deprecated: must be an object/],
+  ['missing superseded_by', { since: '1.3.0' }, /Demo: deprecated\.superseded_by: required string/],
+  ['missing since', { superseded_by: 'Other' }, /Demo: deprecated\.since: required bare version/],
+  ['a prefixed since', { superseded_by: 'Other', since: '>=1.3.0' }, /Demo: deprecated\.since: required bare version/],
+  ['a non-string reason', { ...dep, reason: 3 }, /Demo: deprecated\.reason: must be a string/],
+  ['an unknown field', { ...dep, until: '2.0.0' }, /Demo: deprecated: unknown field "until"/],
+  ['superseded by itself', { ...dep, superseded_by: 'Demo' }, /Demo: deprecated\.superseded_by: cannot name itself/],
+] as const) {
+  test(`rejects deprecated ${label}`, () => {
+    assert.match(checkShape([{ ...good(), deprecated: value }]).join('\n'), msg);
+  });
+}
+test('replaces and superseded_by must name listed plugins', () => {
+  const other = { ...good(), name: 'Other', requires: [], recommends: [] };
+  const third = { ...good(), name: 'Third', requires: [], recommends: [] };
+  const msg = checkDependencyNames([{ ...good(), replaces: ['Gone'], deprecated: { ...dep, superseded_by: 'Nobody' } }, other, third]).join('\n');
+  assert.match(msg, /Demo: replaces\[0\] "Gone" is not a plugin in plugins\.json/);
+  assert.match(msg, /Demo: deprecated\.superseded_by "Nobody" is not a plugin in plugins\.json/);
+  assert.deepEqual(checkDependencyNames([{ ...good(), replaces: ['Third'], deprecated: dep }, other, third]), []);
+});
+
 // Dependency names must be listed plugins (Switchboard once recommended `SuiteUI`, Harbor's working title).
 test('the real plugins.json names only listed plugins as dependencies', () => {
   const entries = JSON.parse(readFileSync(new URL('../plugins.json', import.meta.url), 'utf8'));
