@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { checkShape, checkOnline, CATEGORIES, type Fetcher } from './validate.ts';
+import { checkShape, checkDependencyNames, checkOnline, CATEGORIES, type Fetcher } from './validate.ts';
 
 const good = () => ({
   title: 'Demo',
@@ -91,6 +91,31 @@ test('added equal to last_updated passes', () => {
 
 test('rejects a duplicate name', () => {
   assert.match(checkShape([good(), good()]).join('\n'), /Demo: duplicate name/);
+});
+
+// Dependency names must be listed plugins (Switchboard once recommended `SuiteUI`, Harbor's working title).
+test('the real plugins.json names only listed plugins as dependencies', () => {
+  const entries = JSON.parse(readFileSync(new URL('../plugins.json', import.meta.url), 'utf8'));
+  assert.deepEqual(checkDependencyNames(entries), []);
+});
+
+test('dependencies on listed plugins pass', () => {
+  const other = { ...good(), name: 'Other', requires: [], recommends: [] };
+  const third = { ...good(), name: 'Third', requires: [], recommends: [] };
+  assert.deepEqual(checkDependencyNames([good(), other, third]), []);
+});
+
+test('rejects a requires or recommends naming an unlisted plugin', () => {
+  const other = { ...good(), name: 'Other', requires: [], recommends: [] };
+  const msg = checkDependencyNames([good(), other]).join('\n');
+  assert.match(msg, /Demo: recommends\[0\]\.plugin "Third" is not a plugin in plugins\.json/);
+  assert.doesNotMatch(msg, /"Other"/);
+});
+
+test('dependency names are case-sensitive', () => {
+  const other = { ...good(), name: 'other', requires: [], recommends: [] };
+  const third = { ...good(), name: 'Third', requires: [], recommends: [] };
+  assert.match(checkDependencyNames([good(), other, third]).join('\n'), /requires\[0\]\.plugin "Other"/);
 });
 
 // Online checks with a fake fetch.
