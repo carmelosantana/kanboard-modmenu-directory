@@ -547,5 +547,23 @@
     "homepage": "https://github.com/carmelosantana/kanboard-hotdog-press",
     "download": "https://github.com/carmelosantana/kanboard-hotdog-press/releases/download/v0.1.1/HotDogPress-0.1.1.zip",
     "sha256": "8ac2046b61eccc84b8672057ea23208e94cc5f12c02aed1188d306f44c7a929f"
+  },
+  {
+    "title": "Broadside",
+    "name": "Broadside",
+    "category": "AI",
+    "author": "Carmelo Santana",
+    "description": "Per-project artifacts for Kanboard: any AI agent publishes sandboxed HTML and Markdown pages on the suite's design tokens.",
+    "version": "1.0.0",
+    "added": "2026-11-25",
+    "last_updated": "2026-11-25",
+    "compatible_version": ">=1.2.47",
+    "homepage": "https://github.com/carmelosantana/kanboard-broadside",
+    "download": "https://github.com/carmelosantana/kanboard-broadside/releases/download/v1.0.0/Broadside-1.0.0.zip",
+    "sha256": "45cd85da9120eca314a99252258a5a2e657153b3fb67d4d98f3ea88a4412c56f",
+    "recommends": [
+      { "plugin": "Harbor", "min_version": "2.0.0", "reason": "tokens and theme for artifact pages" },
+      { "plugin": "AiConnector", "min_version": "1.2.0", "reason": "rewrites non-conforming imports onto the contract" }
+    ]
   }
 ]
