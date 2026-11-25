@@ -13,7 +13,7 @@ export type Fetcher = (url: string, init?: { method?: string; headers?: Record<s
 
 const ENTRY_FIELDS = new Set([
   'title', 'name', 'category', 'author', 'description', 'version', 'added', 'last_updated',
-  'compatible_version', 'homepage', 'download', 'screenshots', 'requires', 'recommends', 'conflicts',
+  'compatible_version', 'homepage', 'download', 'sha256', 'screenshots', 'requires', 'recommends', 'conflicts',
 ]);
 const REQUIRED = ['name', 'title', 'category', 'version', 'added', 'last_updated', 'download'] as const;
 /** The categories this directory allows. ModMenu itself shows any string, so forks may use their own. */
@@ -90,6 +90,9 @@ export function checkShape(data: unknown): string[] {
       if (typeof homepage === 'string' && !download.startsWith(`${homepage.replace(/\/$/, '')}/releases/download/`)) {
         out.push(`${label}: download is not a release of homepage ${homepage}`);
       }
+    }
+    if (entry.sha256 !== undefined && (typeof entry.sha256 !== 'string' || !/^[0-9a-f]{64}$/.test(entry.sha256))) {
+      out.push(`${label}: sha256 must be 64 lowercase hex characters (the release zip's SHA-256)`);
     }
     if (typeof entry.category === 'string' && entry.category !== '' && !CATEGORIES.includes(entry.category)) {
       out.push(`${label}: category ${JSON.stringify(entry.category)} is not one of ${CATEGORIES.join(', ')}`);
@@ -168,6 +171,13 @@ export async function checkOnline(entries: Array<Record<string, any>>, fetcher: 
     }
     const dl = await fetcher(e.download, { method: 'HEAD', headers: { 'User-Agent': 'modmenu-directory-ci' } });
     if (dl.status !== 200) out.push(`${e.name}: download returned ${dl.status} (${e.download})`);
+    else if (typeof e.sha256 === 'string') {
+      const zip = await fetcher(e.download, { headers: { 'User-Agent': 'modmenu-directory-ci' } });
+      const { createHash } = await import('node:crypto');
+      const actual = createHash('sha256').update(new Uint8Array(await zip.arrayBuffer())).digest('hex');
+      if (zip.status !== 200) out.push(`${e.name}: sha256 check: download returned ${zip.status}`);
+      else if (actual !== e.sha256) out.push(`${e.name}: sha256 is ${e.sha256} but the download hashes to ${actual}`);
+    }
     return out;
   }));
   return results.flat();

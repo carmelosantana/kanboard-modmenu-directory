@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { checkShape, checkDependencyNames, checkOnline, CATEGORIES, type Fetcher } from './validate.ts';
 
 const good = () => ({
@@ -93,6 +94,23 @@ test('rejects a duplicate name', () => {
   assert.match(checkShape([good(), good()]).join('\n'), /Demo: duplicate name/);
 });
 
+// sha256: optional pin of the release zip, 64 lowercase hex characters (ModMenu 1.6.0 verifies it).
+const HASH = 'a'.repeat(64);
+test('accepts an entry with a sha256', () => {
+  assert.deepEqual(checkShape([{ ...good(), sha256: HASH }]), []);
+});
+for (const [label, value] of [
+  ['uppercase hex', 'A'.repeat(64)],
+  ['63 characters', 'a'.repeat(63)],
+  ['65 characters', 'a'.repeat(65)],
+  ['non-hex', 'g'.repeat(64)],
+  ['a number', 123],
+] as const) {
+  test(`rejects a sha256 that is ${label}`, () => {
+    assert.match(checkShape([{ ...good(), sha256: value }]).join('\n'), /Demo: sha256 must be 64 lowercase hex characters/);
+  });
+}
+
 // Dependency names must be listed plugins (Switchboard once recommended `SuiteUI`, Harbor's working title).
 test('the real plugins.json names only listed plugins as dependencies', () => {
   const entries = JSON.parse(readFileSync(new URL('../plugins.json', import.meta.url), 'utf8'));
@@ -119,10 +137,11 @@ test('dependency names are case-sensitive', () => {
 });
 
 // Online checks with a fake fetch.
-const fakeFetch = (routes: Record<string, { status: number; body?: unknown }>): Fetcher =>
+const fakeFetch = (routes: Record<string, { status: number; body?: unknown; raw?: Uint8Array }>): Fetcher =>
   async (url, init) => {
     const r = routes[`${init?.method ?? 'GET'} ${url}`];
     if (!r) return new Response('not found', { status: 404 });
+    if (r.raw) return new Response(r.raw, { status: r.status });
     return new Response(r.body === undefined ? null : JSON.stringify(r.body), { status: r.status });
   };
 
@@ -160,4 +179,33 @@ test('online: last_updated must be the release publish date (UTC)', async () => 
 test('online: a matching release without published_at is reported plainly', async () => {
   const f = fakeFetch({ [latest]: { status: 200, body: { tag_name: 'v1.2.3' } }, [zip]: { status: 200 } });
   assert.deepEqual(await checkOnline([good()], f), ['Demo: v1.2.3 has no published_at']);
+});
+
+const zipGet = 'GET https://github.com/acme/kanboard-demo/releases/download/v1.2.3/Demo-1.2.3.zip';
+const zipBytes = new TextEncoder().encode('fake zip bytes');
+const zipHash = createHash('sha256').update(zipBytes).digest('hex');
+const okRelease = { status: 200, body: { tag_name: 'v1.2.3', published_at: '2026-02-01T21:30:00Z' } };
+
+test('online: a sha256 matching the downloaded zip passes', async () => {
+  const f = fakeFetch({ [latest]: okRelease, [zip]: { status: 200 }, [zipGet]: { status: 200, raw: zipBytes } });
+  assert.deepEqual(await checkOnline([{ ...good(), sha256: zipHash }], f), []);
+});
+
+test('online: a sha256 that does not match the downloaded zip fails', async () => {
+  const f = fakeFetch({ [latest]: okRelease, [zip]: { status: 200 }, [zipGet]: { status: 200, raw: zipBytes } });
+  assert.match(
+    (await checkOnline([{ ...good(), sha256: HASH }], f)).join('\n'),
+    new RegExp(`Demo: sha256 is ${HASH} but the download hashes to ${zipHash}`),
+  );
+});
+
+test('online: without a sha256 the zip is not downloaded', async () => {
+  let gets = 0;
+  const base = fakeFetch({ [latest]: okRelease, [zip]: { status: 200 } });
+  const f: Fetcher = async (url, init) => {
+    if ((init?.method ?? 'GET') === 'GET' && url.endsWith('.zip')) gets++;
+    return base(url, init);
+  };
+  assert.deepEqual(await checkOnline([good()], f), []);
+  assert.equal(gets, 0);
 });
