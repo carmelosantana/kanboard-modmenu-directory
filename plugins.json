@@ -33,12 +33,13 @@
     "category": "Administration",
     "author": "Carmelo Santana",
     "description": "One-shot helper: upgrades ModMenu older than 1.3.0 to the self-updating version, then can be removed.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "added": "2026-10-08",
-    "last_updated": "2026-11-17",
+    "last_updated": "2026-11-25",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-modmenu-updater",
-    "download": "https://github.com/carmelosantana/kanboard-modmenu-updater/releases/download/v1.0.1/ModMenuUpdater-1.0.1.zip",
+    "download": "https://github.com/carmelosantana/kanboard-modmenu-updater/releases/download/v1.0.2/ModMenuUpdater-1.0.2.zip",
+    "sha256": "ad3cee52bab9022d844ef6e5d8d754f0112c829a6a57736cc7b2d35189eda417",
     "screenshots": ["assets/mod-menu-updater/1.webp"],
     "requires": [
       { "plugin": "ModMenu", "min_version": "1.1.0", "reason": "Uses ModMenu's directory sources and archive checks." }
@@ -84,12 +85,13 @@
     "category": "Administration",
     "author": "Carmelo Santana",
     "description": "Bulk-delete multiple projects in one action.",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "added": "2026-07-03",
-    "last_updated": "2026-07-10",
+    "last_updated": "2026-11-25",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-bulk-project-delete",
-    "download": "https://github.com/carmelosantana/kanboard-bulk-project-delete/releases/download/v1.0.1/BulkProjectDelete-1.0.1.zip",
+    "download": "https://github.com/carmelosantana/kanboard-bulk-project-delete/releases/download/v1.1.0/BulkProjectDelete-1.1.0.zip",
+    "sha256": "b98205397cfd2c2937d0a839cac68928247edada8efea2ab4fb3178e5051fb92",
     "screenshots": ["assets/bulk-project-delete/1.webp", "assets/bulk-project-delete/2.webp"]
   },
   {
@@ -223,12 +225,13 @@
     "category": "Time tracking",
     "author": "Carmelo Santana",
     "description": "Consultant hours reporting plus progress: subtask and time meters on board cards, project and milestone progress, and XP with levels. Pick a project and date range, choose breakdowns, optionally add an AI summary, copy as Markdown or export CSV.",
-    "version": "1.7.2",
+    "version": "1.7.3",
     "added": "2026-08-22",
-    "last_updated": "2026-11-17",
+    "last_updated": "2026-11-25",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-time-report",
-    "download": "https://github.com/carmelosantana/kanboard-time-report/releases/download/v1.7.2/TimeReport-1.7.2.zip",
+    "download": "https://github.com/carmelosantana/kanboard-time-report/releases/download/v1.7.3/TimeReport-1.7.3.zip",
+    "sha256": "0cab4e1e14d585f487fe8b74c099f0247f82f3a74cbccf130b7c1f193e2dfea8",
     "screenshots": ["assets/time-report/1.webp", "assets/time-report/2.webp"],
     "recommends": [
       { "plugin": "AiConnector", "min_version": "1.0.0", "reason": "adds an AI narrative summary of the completed work (the report works fully without it)" },
@@ -326,12 +329,13 @@
     "category": "Planning",
     "author": "Carmelo Santana",
     "description": "Several project boards on one page: pick projects, search across them, fold one away, and drag a task from one project's board into another's. Only shows projects you can access. A maintained fork of the original BigBoard plugin.",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "added": "2026-11-17",
-    "last_updated": "2026-11-17",
+    "last_updated": "2026-11-25",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-bigboard",
-    "download": "https://github.com/carmelosantana/kanboard-bigboard/releases/download/v2.0.0/Bigboard-2.0.0.zip",
+    "download": "https://github.com/carmelosantana/kanboard-bigboard/releases/download/v2.0.1/Bigboard-2.0.1.zip",
+    "sha256": "98dfb69397845aff1f7587f2b2ef0bc00615530331bcf64f76c75e31c15af6b2",
     "screenshots": ["assets/bigboard/1.webp", "assets/bigboard/2.webp"]
   },
   {
@@ -423,12 +427,13 @@
     "category": "Fun",
     "author": "Carmelo Santana",
     "description": "A game launcher for your team with four original browser games, best-per-player leaderboards, saves and challenge links. Games run sandboxed, and other plugins can add their own.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "added": "2026-11-20",
-    "last_updated": "2026-11-20",
+    "last_updated": "2026-11-25",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-lan-party",
-    "download": "https://github.com/carmelosantana/kanboard-lan-party/releases/download/v0.1.0/LanParty-0.1.0.zip",
+    "download": "https://github.com/carmelosantana/kanboard-lan-party/releases/download/v0.2.0/LanParty-0.2.0.zip",
+    "sha256": "9f6db403bf9d209724d4370b5cc598e217a4e314b80e78fa2d2d1e6d7393b201",
     "screenshots": ["assets/lan-party/1.webp", "assets/lan-party/2.webp", "assets/lan-party/3.webp", "assets/lan-party/4.webp"],
     "recommends": [
       { "plugin": "Agents", "min_version": "0.5.0", "reason": "keeps agent users off the leaderboards" }
@@ -440,12 +445,13 @@
     "category": "Administration",
     "author": "Carmelo Santana",
     "description": "Track domain registrations through public RDAP: a watchlist with registrar and expiry, one renewal task per domain per expiry cycle, DNS records, change history and IP/ASN lookups.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "added": "2026-11-23",
     "last_updated": "2026-11-25",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-deed",
-    "download": "https://github.com/carmelosantana/kanboard-deed/releases/download/v1.0.1/Deed-1.0.1.zip"
+    "download": "https://github.com/carmelosantana/kanboard-deed/releases/download/v1.0.2/Deed-1.0.2.zip",
+    "sha256": "4c7d7d7ae237dbd76f9aeaff7f24a39118de884dae7552e508d360bc6c513d4e"
   },
   {
     "title": "Windowsill",
@@ -534,11 +540,12 @@
     "category": "Fun",
     "author": "Carmelo Santana",
     "description": "Make a single-sheet, eight-page zine and print it at home.",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "added": "2026-11-24",
-    "last_updated": "2026-11-24",
+    "last_updated": "2026-11-25",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-hotdog-press",
-    "download": "https://github.com/carmelosantana/kanboard-hotdog-press/releases/download/v0.1.0/HotDogPress-0.1.0.zip"
+    "download": "https://github.com/carmelosantana/kanboard-hotdog-press/releases/download/v0.1.1/HotDogPress-0.1.1.zip",
+    "sha256": "8ac2046b61eccc84b8672057ea23208e94cc5f12c02aed1188d306f44c7a929f"
   }
 ]
