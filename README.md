@@ -34,6 +34,7 @@ A JSON array of plugin objects. Fields:
 | `added` | yes* | `YYYY-MM-DD`: the day the entry first appeared in this directory. Drives the "First submitted" sort. |
 | `last_updated` | yes* | `YYYY-MM-DD`: the UTC publish date of the GitHub release of `version`. Drives the default "Last updated" sort. |
 | `download` | yes | HTTPS URL of the plugin zip (its single top-level folder must equal `name`). |
+| `sha256` | no | SHA-256 of the `download` zip, 64 lowercase hex characters (`curl -sL <download> \| sha256sum`). ModMenu 1.6.0+ refuses an archive that doesn't match. Change it with every `version` bump. |
 | `author` | no | Author name. |
 | `description` | no | Short description shown on the card. |
 | `homepage` | no | Project URL. |
@@ -81,6 +82,7 @@ Publish the release first, then list it. CI (`.github/workflows/validate.yml`) r
 - a `requires` or `recommends` `plugin` is not the exact `name` of an entry in `plugins.json`
   (a working title or typo resolves to nothing);
 - `download` is not `<homepage>/releases/download/v<version>/<name>-<version>.zip`;
+- `sha256` is not 64 lowercase hex characters, or (online) does not match the downloaded zip;
 - `version` is not the repo's latest GitHub release, `last_updated` is not that release's UTC publish
   date, or the `download` URL does not return 200.
 
