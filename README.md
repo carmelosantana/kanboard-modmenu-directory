@@ -78,6 +78,8 @@ Publish the release first, then list it. CI (`.github/workflows/validate.yml`) r
   or a dependency's `min_version` is not a bare version;
 - `requires` or `recommends` is not an array of `{ "plugin", "min_version", "reason" }` objects
   (ModMenu silently ignores any other shape, so the dependency would never be enforced);
+- a `requires` or `recommends` `plugin` is not the exact `name` of an entry in `plugins.json`
+  (a working title or typo resolves to nothing);
 - `download` is not `<homepage>/releases/download/v<version>/<name>-<version>.zip`;
 - `version` is not the repo's latest GitHub release, `last_updated` is not that release's UTC publish
   date, or the `download` URL does not return 200.

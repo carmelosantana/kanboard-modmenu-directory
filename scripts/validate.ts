@@ -121,6 +121,27 @@ export function checkShape(data: unknown): string[] {
 }
 
 /** Network checks for entries that passed checkShape. */
+/**
+ * Offline: every `requires`/`recommends` `plugin` names an entry in plugins.json (exact, case-sensitive
+ * `name`). ModMenu resolves dependencies by that name, so a working title or typo silently resolves to nothing.
+ * Run it after checkShape passes; it skips entries whose dependency lists are malformed.
+ */
+export function checkDependencyNames(entries: Array<Record<string, any>>): string[] {
+  const names = new Set(entries.map((e) => e.name));
+  const out: string[] = [];
+  for (const entry of entries) {
+    for (const key of ['requires', 'recommends'] as const) {
+      if (!Array.isArray(entry[key])) continue;
+      entry[key].forEach((dep: any, i: number) => {
+        if (isObject(dep) && typeof dep.plugin === 'string' && !names.has(dep.plugin)) {
+          out.push(`${entry.name}: ${key}[${i}].plugin ${JSON.stringify(dep.plugin)} is not a plugin in plugins.json`);
+        }
+      });
+    }
+  }
+  return out;
+}
+
 export async function checkOnline(entries: Array<Record<string, any>>, fetcher: Fetcher, token?: string): Promise<string[]> {
   const headers: Record<string, string> = { Accept: 'application/vnd.github+json', 'User-Agent': 'modmenu-directory-ci' };
   if (token) headers.Authorization = `Bearer ${token}`;
@@ -163,6 +184,7 @@ async function main(): Promise<void> {
     process.exit(1);
   }
   const problems = checkShape(data);
+  if (problems.length === 0) problems.push(...checkDependencyNames(data as Array<Record<string, any>>));
   if (problems.length === 0 && process.argv.includes('--online')) {
     const fetcher: Fetcher = (url, init) => fetch(url, { ...init, redirect: 'follow' });
     problems.push(...await checkOnline(data as Array<Record<string, any>>, fetcher, process.env.GITHUB_TOKEN));
