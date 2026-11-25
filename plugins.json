@@ -407,12 +407,12 @@
     "category": "Administration",
     "author": "Carmelo Santana",
     "description": "Encrypted password store for Kanboard: per-user keys behind a separate vault passphrase, shared groups, agent access, one-time share links and KeePassXC import/export.",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "added": "2026-11-20",
-    "last_updated": "2026-11-24",
+    "last_updated": "2026-11-25",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-vault",
-    "download": "https://github.com/carmelosantana/kanboard-vault/releases/download/v1.1.0/Vault-1.1.0.zip",
+    "download": "https://github.com/carmelosantana/kanboard-vault/releases/download/v1.1.1/Vault-1.1.1.zip",
     "recommends": [
       { "plugin": "Agents", "min_version": "0.3.2", "reason": "creates the agent users that Vault lets read granted entries through the API" }
     ]
