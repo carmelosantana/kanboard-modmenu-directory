@@ -546,13 +546,13 @@
     "category": "Fun",
     "author": "Carmelo Santana",
     "description": "Make a single-sheet, eight-page zine and print it at home.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "added": "2026-11-24",
-    "last_updated": "2026-11-25",
+    "last_updated": "2026-11-26",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-hotdog-press",
-    "download": "https://github.com/carmelosantana/kanboard-hotdog-press/releases/download/v0.1.1/HotDogPress-0.1.1.zip",
-    "sha256": "8ac2046b61eccc84b8672057ea23208e94cc5f12c02aed1188d306f44c7a929f"
+    "download": "https://github.com/carmelosantana/kanboard-hotdog-press/releases/download/v0.1.2/HotDogPress-0.1.2.zip",
+    "sha256": "a3604968fcdfd894dd8dc8c94bcf2d8ee9483558adba05bd25faaca1f47514d0"
   },
   {
     "title": "Broadside",
