@@ -118,14 +118,14 @@
     "name": "AiConnector",
     "category": "AI",
     "author": "Carmelo Santana",
-    "description": "Universal multi-provider AI backend (built on php-agents): configure named provider profiles (Anthropic, OpenAI, Grok, Gemini, Mistral, Ollama), pick a default, and switch on the fly. Exposes a shared PHP API other plugins consume, including model context-window discovery and token estimation (ModelCatalog), and shared AI limits (a per-person hourly quota and a longest-request cap) every consuming plugin checks before each request, and model routing: a profile per plugin, feature and project, with one shared picker, and a streaming API (AiStream) with guarded, quota-checked attempts.",
-    "version": "1.5.0",
+    "description": "Universal multi-provider AI backend (built on php-agents): configure named provider profiles (Anthropic, OpenAI, Grok, Gemini, Mistral, Ollama), pick a default, and switch on the fly. Exposes a shared PHP API other plugins consume, including model context-window discovery and token estimation (ModelCatalog), and shared AI limits (a per-person hourly quota and a longest-request cap) every consuming plugin checks before each request, and model routing: a profile per plugin, feature and project, with one shared picker, and a streaming API (AiStream) with guarded, quota-checked attempts for text and structured output.",
+    "version": "1.6.0",
     "added": "2026-07-10",
     "last_updated": "2026-11-27",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-ai-connector",
-    "download": "https://github.com/carmelosantana/kanboard-ai-connector/releases/download/v1.5.0/AiConnector-1.5.0.zip",
-    "sha256": "c11a43094d09031b317cc774a13b533e7ec4a9aa3ca49a21bd402ecc0ec2a68f",
+    "download": "https://github.com/carmelosantana/kanboard-ai-connector/releases/download/v1.6.0/AiConnector-1.6.0.zip",
+    "sha256": "7cd4b848a15bdb80c724c19f794c525f1f0040dc615739cd6cbd21906e03fc58",
     "screenshots": ["assets/ai-connector/1.webp", "assets/ai-connector/2.webp", "assets/ai-connector/3.webp"]
   },
   {
