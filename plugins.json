@@ -134,16 +134,16 @@
     "category": "AI",
     "author": "Carmelo Santana",
     "description": "Generate subtasks from a task description using AI. The provider backend (Anthropic, OpenAI, Grok, Gemini, Mistral, Ollama) is supplied by the AiConnector plugin, with a point-of-use provider picker.",
-    "version": "1.1.4",
+    "version": "1.2.0",
     "added": "2026-07-03",
-    "last_updated": "2026-11-26",
+    "last_updated": "2026-11-27",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-subtask-generator",
-    "download": "https://github.com/carmelosantana/kanboard-subtask-generator/releases/download/v1.1.4/SubtaskGenerator-1.1.4.zip",
-    "sha256": "93f42e617deac22b8808a28ad8b1424d24276563b0f033fe9d3105aca3f01436",
+    "download": "https://github.com/carmelosantana/kanboard-subtask-generator/releases/download/v1.2.0/SubtaskGenerator-1.2.0.zip",
+    "sha256": "719332c9393087321dd5a7416b716a2d33ea71bc36e5862c611cb2abcbde167b",
     "screenshots": ["assets/subtask-generator/1.webp", "assets/subtask-generator/2.webp"],
     "requires": [
-      { "plugin": "AiConnector", "min_version": "1.3.0", "reason": "provides the AI provider backend" }
+      { "plugin": "AiConnector", "min_version": "1.4.0", "reason": "provides the AI provider backend" }
     ]
   },
   {
@@ -199,16 +199,16 @@
     "category": "Reporting",
     "author": "Carmelo Santana",
     "description": "A private, per-user reflection companion: mine your own Kanboard activity, record who you want to be, and reflect on whether the two align — with an LLM (via AiConnector) as a collaborator, never an authority. Works fully manually without AI.",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "added": "2026-07-11",
-    "last_updated": "2026-11-26",
+    "last_updated": "2026-11-27",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-kensho",
-    "download": "https://github.com/carmelosantana/kanboard-kensho/releases/download/v1.0.4/Kensho-1.0.4.zip",
-    "sha256": "ff095afb06708a936544145281b710441782f535410a99af646a12132cc01f38",
+    "download": "https://github.com/carmelosantana/kanboard-kensho/releases/download/v1.1.0/Kensho-1.1.0.zip",
+    "sha256": "f3e1c61bd87db305c13ec7e0fecfdc0ef837cbd1441cceb76867f6ea18760005",
     "screenshots": ["assets/kensho/1.webp"],
     "recommends": [
-      { "plugin": "AiConnector", "min_version": "1.3.0", "reason": "AI-assisted area proposal, goal clarification, and reflective narrative (Kensho works fully manually without it)" },
+      { "plugin": "AiConnector", "min_version": "1.4.0", "reason": "AI-assisted area proposal, goal clarification, and reflective narrative (Kensho works fully manually without it)" },
       { "plugin": "ShadcnTheme", "min_version": "1.1.0", "reason": "themed styling via the kbx-* primitives" }
     ]
   },
@@ -235,16 +235,16 @@
     "category": "Time tracking",
     "author": "Carmelo Santana",
     "description": "Consultant hours reporting plus progress: subtask and time meters on board cards, project and milestone progress, and XP with levels. Pick a project and date range, choose breakdowns, optionally add an AI summary, copy as Markdown or export CSV.",
-    "version": "1.7.4",
+    "version": "1.8.0",
     "added": "2026-08-22",
-    "last_updated": "2026-11-26",
+    "last_updated": "2026-11-27",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-time-report",
-    "download": "https://github.com/carmelosantana/kanboard-time-report/releases/download/v1.7.4/TimeReport-1.7.4.zip",
-    "sha256": "50b0164c2d7122869ec01a960ba189223eca7cc9a89e6aad32c5e36f2b332985",
+    "download": "https://github.com/carmelosantana/kanboard-time-report/releases/download/v1.8.0/TimeReport-1.8.0.zip",
+    "sha256": "9b9878a4c0a2dd1575c635dfbb475b9254b3b33353993d8faeff3e65d1c80741",
     "screenshots": ["assets/time-report/1.webp", "assets/time-report/2.webp"],
     "recommends": [
-      { "plugin": "AiConnector", "min_version": "1.3.0", "reason": "adds an AI narrative summary of the completed work (the report works fully without it)" },
+      { "plugin": "AiConnector", "min_version": "1.4.0", "reason": "adds an AI narrative summary of the completed work (the report works fully without it)" },
       { "plugin": "Agents", "min_version": "0.3.0", "reason": "adds party XP totals: an owner's level includes their agents' work (progress works fully without it)" }
     ]
   },
@@ -254,19 +254,19 @@
     "category": "Time tracking",
     "author": "Carmelo Santana",
     "description": "Generate polished PDF invoices from your TimeReport hours: pick a project and date range, roll up line items by task, day or week, set rate and tax, and track invoices through draft, issued and paid with stable per-year numbering. Per-project rates, client details and payment terms, an invoice page with inline PDF, and live totals as you draft.",
-    "version": "1.2.6",
+    "version": "1.3.0",
     "added": "2026-08-23",
-    "last_updated": "2026-11-26",
+    "last_updated": "2026-11-27",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-time-invoice",
-    "download": "https://github.com/carmelosantana/kanboard-time-invoice/releases/download/v1.2.6/TimeInvoice-1.2.6.zip",
-    "sha256": "e0e923d02b058372168538c19d80632f29ef2db4251afc8dd1d29be04142496e",
+    "download": "https://github.com/carmelosantana/kanboard-time-invoice/releases/download/v1.3.0/TimeInvoice-1.3.0.zip",
+    "sha256": "48b0ddebbb2b4eb47bea50d4afe858cc715a50d91548111dcaf1443bd8b77ded",
     "screenshots": ["assets/time-invoice/1.webp"],
     "requires": [
       { "plugin": "TimeReport", "min_version": "1.4.0", "reason": "supplies the deduped, correctly-attributed hours aggregate (report()) and breakdown[].task_ids used for invoice line items and AI cover-note context" }
     ],
     "recommends": [
-      { "plugin": "AiConnector", "min_version": "1.3.0", "reason": "optional AI cover-note generation via ProviderRegistry (structured output), ModelCatalog (context-window sizing) and AiQuota (the shared AI limits); the feature is hidden when absent or older" }
+      { "plugin": "AiConnector", "min_version": "1.4.0", "reason": "optional AI cover-note generation via ProviderRegistry (structured output, model routing), ModelCatalog (context-window sizing) and AiQuota (the shared AI limits); the feature is hidden when absent or older" }
     ]
   },
   {
@@ -392,15 +392,16 @@
     "category": "AI",
     "author": "Carmelo Santana",
     "description": "A chat room for every project, with an optional project bot that answers from the project's tasks, comments and knowledge base, citing its sources, and an ask-the-bot drawer on each task. People chat works on its own; the bot needs AiConnector.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "added": "2026-11-20",
-    "last_updated": "2026-11-20",
+    "last_updated": "2026-11-27",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-agent-chat",
-    "download": "https://github.com/carmelosantana/kanboard-agent-chat/releases/download/v0.1.0/AgentChat-0.1.0.zip",
+    "download": "https://github.com/carmelosantana/kanboard-agent-chat/releases/download/v0.2.0/AgentChat-0.2.0.zip",
+    "sha256": "2f16fa1af14785ad646e2d3cbf0d13587ef0fe2fd1beaf06f362b00d56110691",
     "screenshots": ["assets/agent-chat/1.webp"],
     "recommends": [
-      { "plugin": "AiConnector", "min_version": "1.2.0", "reason": "Project bot answers" },
+      { "plugin": "AiConnector", "min_version": "1.4.0", "reason": "Project bot answers" },
       { "plugin": "Agents", "min_version": "0.5.0", "reason": "Agent badges" }
     ]
   },
@@ -570,16 +571,16 @@
     "category": "AI",
     "author": "Carmelo Santana",
     "description": "Per-project artifacts for Kanboard: any AI agent publishes sandboxed HTML and Markdown pages on the suite's design tokens.",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "added": "2026-11-25",
-    "last_updated": "2026-11-25",
+    "last_updated": "2026-11-27",
     "compatible_version": ">=1.2.47",
     "homepage": "https://github.com/carmelosantana/kanboard-broadside",
-    "download": "https://github.com/carmelosantana/kanboard-broadside/releases/download/v1.0.0/Broadside-1.0.0.zip",
-    "sha256": "45cd85da9120eca314a99252258a5a2e657153b3fb67d4d98f3ea88a4412c56f",
+    "download": "https://github.com/carmelosantana/kanboard-broadside/releases/download/v1.1.0/Broadside-1.1.0.zip",
+    "sha256": "5180d9ca93eb7e0a825d146e640e330da011759d38cf562f7fb8a67cf4287b38",
     "recommends": [
       { "plugin": "Harbor", "min_version": "2.0.0", "reason": "tokens and theme for artifact pages" },
-      { "plugin": "AiConnector", "min_version": "1.2.0", "reason": "rewrites non-conforming imports onto the contract" }
+      { "plugin": "AiConnector", "min_version": "1.4.0", "reason": "rewrites non-conforming imports onto the contract" }
     ]
   }
 ]
